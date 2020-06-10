@@ -1,0 +1,18 @@
+<template>
+    <footer class="main-footer footer-custom">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 2.4.0
+        </div>
+        <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">MTV</a>.</strong> All rights
+        reserved.
+    </footer>
+</template>
+
+<script>
+    export default {
+        name: "AppFooter",
+    };
+</script>
+<style>
+
+</style>
