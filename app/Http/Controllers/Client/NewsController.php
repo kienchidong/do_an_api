@@ -20,4 +20,8 @@ class NewsController extends Controller
         $new = NewsModel::where('slug', $request->slug)->firstOrFail();
         return $this->successResponseMessage(new NewsDetailResource($new), '200', 'success');
     }
+
+    public function likeNews(Request $request){
+
+    }
 }
