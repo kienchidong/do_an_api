@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\News\NewsDetailResource;
-use App\Model\NewsModel;
+use App\Model\News\NewsModel;
 use App\Traits\ApiResponser;
 use Illuminate\Http\Request;
 
