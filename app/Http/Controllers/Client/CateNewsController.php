@@ -9,6 +9,7 @@ use App\Model\News\CateNewsModel;
 use App\Model\News\NewsModel;
 use App\Traits\ApiResponser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class CateNewsController extends Controller
@@ -26,10 +27,9 @@ class CateNewsController extends Controller
     public function getListNews(Request $request)
     {
         $request->validate([
-           'slug' => 'bail|required',
+           'slug' => 'bail|required|exists:cate_news,slug',
         ]);
-
-        $lists = NewsModel::select('news.*')->join('cate_news', 'cate_id', 'cate_news.id')->where('cate_news.slug', $request->slug)->paginate(10);
-       return $this->successResponseMessage(new NewsCollection($lists), 200, 'get success');
+        $news = CateNewsModel::whereSlug($request->slug)->first()->news()->paginate(10);
+       return $this->successResponseMessage(new NewsCollection($news), 200, 'get success');
     }
 }

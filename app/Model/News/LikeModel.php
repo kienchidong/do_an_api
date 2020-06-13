@@ -8,5 +8,5 @@ class LikeModel extends Model
 {
     //
     protected $table='like_news';
-    protected $fillable = ['new_id', 'user_id'];
+    protected $fillable = ['news_id', 'user_id'];
 }

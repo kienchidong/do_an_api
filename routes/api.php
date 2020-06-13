@@ -19,6 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::middleware('jwt.auth')->group(function (){
     Route::get('test', 'Client\ClientController@test');
     Route::post('logout', 'Client\ClientController@logout');
+
+    Route::post('likeNews', 'Client\NewsController@likeNews');
+
 });
 
 Route::middleware('guest:api')->post('login', 'Client\ClientController@login');
@@ -28,7 +31,7 @@ Route::get('/searchList', 'Dictionary\DictionaryController@searchList');
 
 /*news*/
 Route::post('GetCateNews', 'Client\CateNewsController@getList');
-Route::post('getListNews', 'Client\CateNewsController@getListNews');
+Route::middleware('auth:api')->post('getListNews', 'Client\CateNewsController@getListNews');
 
 Route::post('/getNews', 'Client\NewsController@getNews');
 

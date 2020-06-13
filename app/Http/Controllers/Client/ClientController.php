@@ -26,6 +26,10 @@ class ClientController extends Controller
 
     public function login(Request $request)
     {
+        $request->validate([
+            'email' => 'bail|required',
+            'password' => 'bail|required',
+        ]);
         $credentials = $request->only('email', 'password');
         $user = User::where([
             ['email', $request->email],
@@ -37,6 +41,9 @@ class ClientController extends Controller
             if (!($token = $this->jwt->attempt($credentials))) {
                 return $this->errorResponse('Password is incorrect', 401);
             }
+            $user->update([
+               'api_token' => $token,
+            ]);
             $data = [
                 'token' => $token,
                 'user' => new UserDetailResource($user),
@@ -47,9 +54,12 @@ class ClientController extends Controller
     }
 
     public function logout(){
+        User::find(Auth::id())->update([
+            'api_token' => null,
+        ]);
         Auth::logout();
         $this->jwt->invalidate();
-        return $this->successResponseMessage(new \stdClass(), 200, "Logout success");
+        return $this->successResponseMessage('', 200, "Logout success");
     }
 
     public function test()

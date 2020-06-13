@@ -24,6 +24,7 @@ class NewsResource extends JsonResource
             'summary' => $this->summary,
             'image' => $image,
             'cate' => $this->cate->name,
+            'liked' => $this->liked()
         ];
     }
 }

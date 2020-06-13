@@ -11,14 +11,13 @@ class CateNewsSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker\Factory::create();
-        //
-        for ($i = 0; $i <= 20; $i++) {
-            \App\Model\CateNewsModel::create([
-                'name' => $faker->name,
-                'slug' => $faker->slug,
-            ]);
-        }
+        \App\Model\CateNewsModel::create([
+            'name' => 'Linh tinh',
+            'slug' => 'linh-tinh.html',
+        ], [
+            'name' => 'Học tập',
+            'slug' => 'hoc-tap.html',
+        ]);
 
     }
 }
