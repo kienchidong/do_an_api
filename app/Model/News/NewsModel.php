@@ -39,7 +39,11 @@ class NewsModel extends Model
 
     public function liked()
     {
-        $user_id = (Auth::id()) ? Auth::id() : 0;
-        return in_array($user_id, $this->likes()->pluck('user_id')->toArray());
+        return ($this->likes()->whereUserId(Auth::id())->count() == 0) ? false : true;
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(CommentsModel::class, 'news_id', 'id');
     }
 }

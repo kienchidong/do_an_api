@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Client;
+namespace App\Http\Controllers\Client\News;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\News\CateCollection;

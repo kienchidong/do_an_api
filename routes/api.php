@@ -13,26 +13,37 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+$router->middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::middleware('jwt.auth')->group(function (){
-    Route::get('test', 'Client\ClientController@test');
-    Route::post('logout', 'Client\ClientController@logout');
 
-    Route::post('likeNews', 'Client\NewsController@likeNews');
+/** bắt buộc phải đăng nhập*/
+$router->middleware('jwt.auth')->group(function () use ($router){
+    $router->get('test', 'Client\ClientController@test');
+    $router->post('logout', 'Client\ClientController@logout');
 
+    $router->prefix('news')->group(function () use ($router){
+        $router->post('likeNews', 'Client\News\NewsController@likeNews');
+        $router->post('createComment', 'Client\News\CommentController@createComment');
+    });
 });
 
-Route::middleware('guest:api')->post('login', 'Client\ClientController@login');
+$router->middleware('guest:api')->post('login', 'Client\ClientController@login');
 
-Route::get('/searchWord', 'Dictionary\DictionaryController@search');
-Route::get('/searchList', 'Dictionary\DictionaryController@searchList');
+$router->get('/searchWord', 'Dictionary\DictionaryController@search');
+$router->get('/searchList', 'Dictionary\DictionaryController@searchList');
 
-/*news*/
-Route::post('GetCateNews', 'Client\CateNewsController@getList');
-Route::middleware('auth:api')->post('getListNews', 'Client\CateNewsController@getListNews');
 
-Route::post('/getNews', 'Client\NewsController@getNews');
+/** có thể không đăng nhập */
+$router->middleware('loginOrNot')->group(function () use ($router){
+    /** news*/
+    $router->prefix('news')->group(function () use ($router) {
+        $router->post('GetCateNews', 'Client\News\CateNewsController@getList');
+        $router->post('getListNews', 'Client\News\CateNewsController@getListNews');
+        $router->post('getNews', 'Client\News\NewsController@getNews');
+
+        $router->post('getCommentByNews', 'Client\News\CommentController@getComment');
+    });
+});
 
 
