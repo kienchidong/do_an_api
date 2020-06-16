@@ -19,6 +19,7 @@ class NewsController extends Controller
         $request->validate([
             'slug' => 'required',
         ]);
+        dd(Auth::user());
         $new = NewsModel::where('slug', $request->slug)->firstOrFail();
         return $this->successResponseMessage(new NewsDetailResource($new), '200', 'success');
     }
@@ -27,9 +28,10 @@ class NewsController extends Controller
         $request->validate([
            'news_id' => 'bail|required|exists:news,id',
         ]);
+        dd(Auth::user());
         $request->request->set('user_id', Auth::id());
 
-        LikeModel::create($request->all());
-        return response()->json(Auth::user());
+        $like = LikeModel::create($request->all());
+        return $this->successResponseMessage($like, '200', 'success');
     }
 }
