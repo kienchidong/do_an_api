@@ -24,7 +24,7 @@ class NewsModel extends Model
 
     public function cate()
     {
-        return $this->belongsTo('App\Model\News\CateNewsModel', 'cate_id', 'id');
+        return $this->belongsTo(CateNewsModel::class, 'cate_id', 'id');
     }
 
     public function tags()
@@ -37,8 +37,13 @@ class NewsModel extends Model
         return $this->hasMany(LikeModel::class, 'news_id', 'id');
     }
 
-    public function liked($user_id)
+    public function liked()
     {
-        return in_array($user_id, $this->likes()->pluck('user_id')->toArray());
+        return ($this->likes()->whereUserId(Auth::id())->count() == 0) ? false : true;
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(CommentsModel::class, 'news_id', 'id');
     }
 }

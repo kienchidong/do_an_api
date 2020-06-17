@@ -64,6 +64,7 @@ class Kernel extends HttpKernel
         'cors' => \App\Http\Middleware\Cors::class,
         'locale' => \App\Http\Middleware\Locale::class,
         'jwt.auth' => \App\Http\Middleware\JWTAuthenticate::class,
+        'loginOrNot' => \App\Http\Middleware\loginOrNot::class,
     ];
 
     /**

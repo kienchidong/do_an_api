@@ -3,6 +3,7 @@
 namespace App\Http\Resources\News;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Auth;
 
 class NewsResource extends JsonResource
 {
@@ -24,6 +25,8 @@ class NewsResource extends JsonResource
             'summary' => $this->summary,
             'image' => $image,
             'cate' => $this->cate->name,
+            'number_comment' => $this->comments()->count(),
+            'number_like' => $this->likes()->count(),
             'liked' => $this->liked()
         ];
     }

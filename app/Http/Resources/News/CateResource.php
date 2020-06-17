@@ -18,7 +18,6 @@ class CateResource extends JsonResource
             'cate_id' => $this->id,
             'name' => $this->name,
             'slug' => $this->slug,
-
         ];
     }
 }

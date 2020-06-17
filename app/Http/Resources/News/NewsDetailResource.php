@@ -16,7 +16,6 @@ class NewsDetailResource extends JsonResource
     public function toArray($request)
     {
         $user_id = (Auth::id()) ? Auth::id() : 0;
-        dd(Auth::user());
         $default_folder = asset('images/news') . '/';
         $image = $default_folder . $this->folder . '/' . $this->image;
         $tags = $this->tags;
@@ -30,8 +29,9 @@ class NewsDetailResource extends JsonResource
             'image' => $image,
             'cate' => $this->cate->name,
             'tag' => $tags,
+            'number_comment' => $this->comments()->count(),
             'number_like' => $this->likes->count(),
-            'liked' => $this->liked()
+            'liked' => $this->liked(),
         ];
     }
 }
