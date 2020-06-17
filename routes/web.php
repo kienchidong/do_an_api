@@ -17,6 +17,11 @@
 
 Route::get('test', 'TestController@test');
 Route::get('deleteCate/{id}', 'Admin\CateNewsController@destroy');
+Route::prefix('test')->group(function (){
+    Route::get('getList', 'Admin\Test\TestController@getList');
+
+    Route::get('createSimple', 'Admin\Test\TestController@createSimpleTest');
+});
 
 Route::group(['middleware' => 'locale'], function () {
     Route::get('change-language/{language}', 'LanguageController@changeLanguage')->name(change_language);
