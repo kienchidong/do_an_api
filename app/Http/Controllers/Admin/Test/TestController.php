@@ -28,7 +28,7 @@ class TestController extends Controller
 
         $data['level'] = $request->level;
         for($i=1; $i<=$request->number; $i++) {
-            $data['list_question'] = json_encode(array_rand($questions, '5'));
+            $data['list_question'] = json_encode(array_rand($questions, 20));
             $arr = TestModel::create($data);
         }
 

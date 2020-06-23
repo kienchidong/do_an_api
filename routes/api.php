@@ -44,6 +44,12 @@ $router->middleware('loginOrNot')->group(function () use ($router){
 
         $router->post('getCommentByNews', 'Client\News\CommentController@getComment');
     });
+
+    /** test */
+    $router->prefix('tests')->group(function () use ($router) {
+        $router->post('GetListByLevel', 'Client\Tests\TestController@getList');
+        $router->post('getDetail', 'Client\Tests\TestController@getDetail');
+    });
 });
 
 

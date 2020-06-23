@@ -3,9 +3,8 @@
 namespace App\Http\Resources\Test;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use Symfony\Component\Console\Question\Question;
 
-class TestResource extends JsonResource
+class TestListResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -20,7 +19,6 @@ class TestResource extends JsonResource
             'level' => $this->level,
             'status' => $this->status,
             'number_question' => sizeof(json_decode($this->list_question)),
-            'list_question' => $this->Questions(),
         ];
     }
 }
