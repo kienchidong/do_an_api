@@ -34,9 +34,14 @@ class NewsController extends Controller
         ]);
 
         $request->request->set('user_id', Auth::id());
+        if(NewsModel::find($request->news_id)->liked()){
+            LikeModel::where($request->all())->delete();
+        }else{
+            LikeModel::create($request->all());
+        }
+        $data['number'] = NewsModel::find($request->news_id)->likes()->count();
 
-        LikeModel::create($request->all());
-        return response()->json(Auth::user());
+        return $this->successResponseMessage($data, '200', 'success');
     }
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Resources\News;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Auth;
 
 class NewsDetailResource extends JsonResource
 {
@@ -14,6 +15,7 @@ class NewsDetailResource extends JsonResource
      */
     public function toArray($request)
     {
+        $user_id = (Auth::id()) ? Auth::id() : 0;
         $default_folder = asset('images/news') . '/';
         $image = $default_folder . $this->folder . '/' . $this->image;
         $tags = $this->tags;

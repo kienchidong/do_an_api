@@ -19,7 +19,7 @@ class CommentCollection extends ResourceCollection
             $next_page = $this->currentPage() + 1;
         }
         return [
-            'lists' => CommentRessource::collection($this->collection),
+            'lists' => CommentResource::collection($this->collection),
             'next_page'=>$next_page,
         ];
     }
