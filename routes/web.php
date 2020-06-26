@@ -11,102 +11,103 @@
 |
 */
 
-/* Route::get('/', function () {
+/* $router->get('/', function () use ($router) {
      return view('welcome');
  });*/
 
-Route::get('test', 'TestController@test');
-Route::get('deleteCate/{id}', 'Admin\CateNewsController@destroy');
-Route::prefix('test')->group(function (){
-    Route::get('getList', 'Admin\Test\TestController@getList');
+$router->get('getListNews', 'Admin\NewsController@getList');
+$router->get('test', 'TestController@test');
+$router->get('deleteCate/{id}', 'Admin\CateNewsController@destroy');
+$router->prefix('test')->group(function () use ($router){
+    $router->get('getList', 'Admin\Test\TestController@getList');
 
-    Route::get('createSimple', 'Admin\Test\TestController@createSimpleTest');
+    $router->get('createSimple', 'Admin\Test\TestController@createSimpleTest');
 });
 
-Route::group(['middleware' => 'locale'], function () {
-    Route::get('change-language/{language}', 'LanguageController@changeLanguage')->name(change_language);
+$router->group(['middleware' => 'locale'], function () use ($router) {
+    $router->get('change-language/{language}', 'LanguageController@changeLanguage')->name(change_language);
     Auth::routes();
     /* Route cho admin */
 
-    Route::prefix('/')->group(function () {
+    $router->prefix('/')->group(function () use ($router) {
         /**
          *middleware Login admin
          * */
-        Route::get('loginAdmin.html', 'Auth\Admin\AdminLoginController@index')->name('admin.login');
-        Route::post('loginAdmin', 'Auth\Admin\AdminLoginController@login')->name('admin.login.post');
+        $router->get('loginAdmin.html', 'Auth\Admin\AdminLoginController@index')->name('admin.login');
+        $router->post('loginAdmin', 'Auth\Admin\AdminLoginController@login')->name('admin.login.post');
 
         /**
          * Logout admin
          * */
-        Route::get('logoutAdmin', 'Auth\Admin\AdminLoginController@logout')->name('admin.logout');
+        $router->get('logoutAdmin', 'Auth\Admin\AdminLoginController@logout')->name('admin.logout');
 
-        Route::prefix('/')->middleware('auth:admin')->group(function () {
-            Route::prefix('adminAccount')->group(function () {
-                Route::post('getlist', 'Admin\AdminAccountController@getList');
-                Route::post('createAdmin', 'Admin\AdminAccountController@store');
-                Route::post('createUser', 'Admin\UserAccountController@store');
+        $router->prefix('/')->middleware('auth:admin')->group(function () use ($router) {
+            $router->prefix('adminAccount')->group(function () use ($router) {
+                $router->post('getlist', 'Admin\AdminAccountController@getList');
+                $router->post('createAdmin', 'Admin\AdminAccountController@store');
+                $router->post('createUser', 'Admin\UserAccountController@store');
 
                 /**
                  * userAccount
                  * */
-                Route::post('getListUser', 'Admin\UserAccountController@getList');
-                Route::get('lockUser/{user_id}/{status}', 'Admin\UserAccountController@lockUser');
+                $router->post('getListUser', 'Admin\UserAccountController@getList');
+                $router->get('lockUser/{user_id}/{status}', 'Admin\UserAccountController@lockUser');
 
 
                 /*role and permission*/
-                Route::get('getRoles', 'Admin\AdminAccountController@getRoles');
-                Route::get('getPermissions/{role_id}', 'Admin\AdminAccountController@getPermissions');
+                $router->get('getRoles', 'Admin\AdminAccountController@getRoles');
+                $router->get('getPermissions/{role_id}', 'Admin\AdminAccountController@getPermissions');
 
-                Route::get('adminHasPermission/{id}', 'Admin\AdminAccountController@adminHasPermission');
-                Route::post('setPermission', 'Admin\AdminAccountController@setPermission');
+                $router->get('adminHasPermission/{id}', 'Admin\AdminAccountController@adminHasPermission');
+                $router->post('setPermission', 'Admin\AdminAccountController@setPermission');
             });
 
             /**
              * Bài Viết
              * */
-            Route::prefix('news')->group(function () {
-                Route::post('getListCate', 'Admin\CateNewsController@getList');
-                Route::post('createCate', 'Admin\CateNewsController@store');
-                Route::post('editCate/{id}', 'Admin\CateNewsController@update');
-                Route::post('deleteCate/{id}', 'Admin\CateNewsController@destroy');
+            $router->prefix('news')->group(function () use ($router) {
+                $router->post('getListCate', 'Admin\CateNewsController@getList');
+                $router->post('createCate', 'Admin\CateNewsController@store');
+                $router->post('editCate/{id}', 'Admin\CateNewsController@update');
+                $router->post('deleteCate/{id}', 'Admin\CateNewsController@destroy');
 
-                Route::post('createNews', 'Admin\NewsController@store');
-                Route::post('getListNews', 'Admin\NewsController@getList');
-                Route::get('EditNews/{id}', 'Admin\NewsController@edit');
-                Route::post('Update/{id}', 'Admin\NewsController@update');
-                Route::delete('DeleteNews/{id}', 'Admin\NewsController@destroy');
+                $router->post('createNews', 'Admin\NewsController@store');
+                $router->post('getListNews', 'Admin\NewsController@getList');
+                $router->get('EditNews/{id}', 'Admin\NewsController@edit');
+                $router->post('Update/{id}', 'Admin\NewsController@update');
+                $router->delete('DeleteNews/{id}', 'Admin\NewsController@destroy');
             });
 
             /** câu hỏi
              *
              * */
-            Route::prefix('question')->group(function () {
-                Route::get('getLevel', 'Admin\Questions\LevelController@getList');
-                Route::get('getDetailLevel', 'Admin\Questions\LevelController@getDetail');
+            $router->prefix('question')->group(function () use ($router) {
+                $router->get('getLevel', 'Admin\Questions\LevelController@getList');
+                $router->get('getDetailLevel', 'Admin\Questions\LevelController@getDetail');
 
-                Route::post('createGroupQuestions', 'Admin\Questions\GroupQuestionsController@store');
+                $router->post('createGroupQuestions', 'Admin\Questions\GroupQuestionsController@store');
 
-                Route::post('createQuestions', 'Admin\Questions\QuestionsController@store');
-                Route::post('updateQuestions/{id}', 'Admin\Questions\QuestionsController@update');
-                Route::prefix('simple')->group(function () {
-                    Route::post('getList', 'Admin\Questions\QuestionsController@getList');
-                    Route::delete('delete/{id}', 'Admin\Questions\QuestionsController@destroy');
+                $router->post('createQuestions', 'Admin\Questions\QuestionsController@store');
+                $router->post('updateQuestions/{id}', 'Admin\Questions\QuestionsController@update');
+                $router->prefix('simple')->group(function () use ($router) {
+                    $router->post('getList', 'Admin\Questions\QuestionsController@getList');
+                    $router->delete('delete/{id}', 'Admin\Questions\QuestionsController@destroy');
 
-                    Route::post('import', 'Admin\Questions\QuestionsController@import');
+                    $router->post('import', 'Admin\Questions\QuestionsController@import');
                 });
 
-                Route::prefix('group')->group(function () {
-                    Route::post('getList', 'Admin\Questions\GroupQuestionsController@getList');
+                $router->prefix('group')->group(function () use ($router) {
+                    $router->post('getList', 'Admin\Questions\GroupQuestionsController@getList');
 
-                    Route::get('edit/{id}', 'Admin\Questions\GroupQuestionsController@edit');
-                    Route::put('edit/{id}', 'Admin\Questions\GroupQuestionsController@update');
+                    $router->get('edit/{id}', 'Admin\Questions\GroupQuestionsController@edit');
+                    $router->put('edit/{id}', 'Admin\Questions\GroupQuestionsController@update');
                 });
             });
 
             /**
              * route VueJs phải ở dưới cùng
              * */
-            Route::any('{all}', 'Auth\Admin\HomeAdminController@index')->where(['all' => '.*'])->name('admin.index');
+            $router->any('{all}', 'Auth\Admin\HomeAdminController@index')->where(['all' => '.*'])->name('admin.index');
         });
     });
 });

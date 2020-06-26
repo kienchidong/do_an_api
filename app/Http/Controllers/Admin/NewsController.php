@@ -6,10 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\NewsRequest;
 use App\Http\Resources\News\NewsCollection;
 use App\Http\Resources\News\NewsDetailResource;
-use App\Model\NewsModel;
+use App\Model\News\NewsModel;
 use App\Traits\ApiResponser;
 use Illuminate\Http\Request;
-use App\Model\CateNewsModel;
+use App\Model\News\CateNewsModel;
 
 class NewsController extends Controller
 {

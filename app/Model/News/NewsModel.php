@@ -24,7 +24,7 @@ class NewsModel extends Model
 
     public function cate()
     {
-        return $this->belongsTo('App\Model\News\CateNewsModel', 'cate_id', 'id');
+        return $this->belongsTo(CateNewsModel::class, 'cate_id', 'id');
     }
 
     public function tags()
