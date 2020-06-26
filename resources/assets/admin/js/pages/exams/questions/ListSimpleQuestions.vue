@@ -95,6 +95,12 @@
                             </label><i v-if="item.status" class="fa fa-check text-green"></i>
                         </b-form>
                     </b-col>
+                    <hr>
+                    <b-col sm="12" md="12">
+                        <b-form inline>
+                            <label>Giải thích: {{ modalDetail.explain }}</label>
+                        </b-form>
+                    </b-col>
                 </b-row>
             </b-container>
         </div>
@@ -155,6 +161,7 @@
                 modalDetail: {
                     questions: null,
                     answers: [],
+                    explain: null,
                 },
                 editForm: [],
             }
@@ -197,6 +204,7 @@
                 let item = this.table.data[index];
                 this.modalDetail.question = item['question'];
                 this.modalDetail.answers = item['answers'];
+                this.modalDetail.explain = item['explain'];
                 this.$swal({
                     title: '<i>Chi tiết câu hỏi</i>',
                     html: this.$refs.DetailQuestion,

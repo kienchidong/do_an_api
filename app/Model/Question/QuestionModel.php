@@ -9,7 +9,7 @@ class QuestionModel extends Model
     //
 
     protected $table = 'questions';
-    protected $fillable = ['group_id', 'question', 'level', 'answer', 'status'];
+    protected $fillable = ['group_id', 'question', 'level', 'answer', 'status', 'explain'];
     public $timestamps = false;
 
     public static function CreateQuestion($data)
@@ -43,9 +43,10 @@ class QuestionModel extends Model
     public function updateQuestion($data)
     {
         $this->update([
-           'question' => $data['question'],
+            'question' => $data['question'],
+            'explain' => $data['explain'],
         ]);
-        foreach ($this->answers()->pluck('id') as $key => $id){
+        foreach ($this->answers()->pluck('id') as $key => $id) {
             AnswerModel::find($id)->update([
                 'answer' => $data['answers'][$key]['value'],
                 'status' => ($data['answers'][$key]['status']) ? 1 : 0,

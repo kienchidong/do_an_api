@@ -21,6 +21,7 @@ class QuestionsResource extends JsonResource
             'level' => $this->level,
             'question' => $this->question,
             'answers' => json_decode($this->answers),
+            'explain' => $this->explain
         ];
     }
 }

@@ -10,11 +10,14 @@
                         v-if="!Boolean(group_level)"
                     >
                         <b-form-select v-model="formData.level" size="sm" class="mt-3">
-                            <b-form-select-option v-for="(item, index) in level" :key="index" :value="item.id">{{ item.name }}</b-form-select-option>
+                            <b-form-select-option v-for="(item, index) in level" :key="index" :value="item.id">{{
+                                item.name }}
+                            </b-form-select-option>
                         </b-form-select>
                     </b-form-group>
                 </b-col>
-            </b-row>  <b-row>
+            </b-row>
+            <b-row>
                 <b-col>
                     <b-form-group
                         id="input-group-1"
@@ -86,6 +89,19 @@
                         </b-form-radio>
                     </b-form>
                 </b-col>
+                <b-col>
+                    <b-form-group
+                        id="input-group-1"
+                        label="Explain:"
+                    >
+                        <b-form-input
+                            v-model="formData.explain"
+                            type="email"
+                            required
+                            placeholder="Enter question"
+                        ></b-form-input>
+                    </b-form-group>
+                </b-col>
                 <b-col sm="12" md="12" class="text-center">
                     <hr>
                     <b-button v-on:click="SubmitFrom">Submit</b-button>
@@ -112,6 +128,7 @@
                     question: null,
                     answers: [],
                     level: null,
+                    explain: ''
                 },
             }
         },
@@ -126,15 +143,17 @@
             },
         },
         created() {
-            this.formData.level = (this.group_level)? this.group_level : null;
-            if(this.editQuestion && this.editQuestion.question){
+            console.log(this.editQuestion)
+            this.formData.level = (this.group_level) ? this.group_level : null;
+            if (this.editQuestion && this.editQuestion.question) {
                 this.formData.question = this.editQuestion.question;
+                this.formData.explain = this.editQuestion.explain;
                 this.answer1 = this.editQuestion.answers[0].answer;
                 this.answer2 = this.editQuestion.answers[1].answer;
                 this.answer3 = (this.editQuestion.answers[2]) ? this.editQuestion.answers[2].answer : null;
                 this.answer4 = (this.editQuestion.answers[3]) ? this.editQuestion.answers[3].answer : null;
-                this.editQuestion.answers.forEach((item, index)=>{
-                    if(item.status){
+                this.editQuestion.answers.forEach((item, index) => {
+                    if (item.status) {
                         this.rightAnswer = index;
                     }
                 });
@@ -156,36 +175,36 @@
             }
         },
         methods: {
-            getLevel(){
+            getLevel() {
                 axios.get('question/getLevel').then(response => {
                     this.level = response.data;
                 })
             },
             SubmitFrom() {
                 let type = '';
-                let message ='';
-                if(this.action){
+                let message = '';
+                if (this.action) {
                     type = 'question/createQuestions';
                     message = 'Tạo thành công!';
                 } else {
-                    type = 'question/updateQuestions/'+ this.editQuestion.id;
+                    type = 'question/updateQuestions/' + this.editQuestion.id;
                     message = 'Sửa thành công!';
                 }
                 this.formData.answers = this.answer;
                 this.formData.group_id = this.group_id;
-                 axios.post(type, this.formData).then(response =>{
+                axios.post(type, this.formData).then(response => {
                     alertify.success(message);
                     this.$emit('nextStep', this.group_step + 1);
-                 }).catch(err => {
-                     const {data} = err.response;
-                     if (typeof data.errors === 'object') {
-                         $.each(data.errors, (key, value) => {
-                             alertify.error(value[0]);
-                         });
-                     } else {
-                         alertify.error(data.message);
-                     }
-                 });
+                }).catch(err => {
+                    const {data} = err.response;
+                    if (typeof data.errors === 'object') {
+                        $.each(data.errors, (key, value) => {
+                            alertify.error(value[0]);
+                        });
+                    } else {
+                        alertify.error(data.message);
+                    }
+                });
             }
         }
     }

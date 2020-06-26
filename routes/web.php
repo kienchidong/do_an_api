@@ -18,7 +18,7 @@
 $router->get('getListNews', 'Admin\NewsController@getList');
 $router->get('test', 'TestController@test');
 $router->get('deleteCate/{id}', 'Admin\CateNewsController@destroy');
-$router->prefix('test')->group(function () use ($router){
+$router->prefix('tests')->group(function () use ($router){
     $router->get('getList', 'Admin\Test\TestController@getList');
 
     $router->get('createSimple', 'Admin\Test\TestController@createSimpleTest');
