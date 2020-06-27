@@ -33,6 +33,11 @@ $router->middleware('guest:api')->post('login', 'Client\ClientController@login')
 $router->get('/searchWord', 'Dictionary\DictionaryController@search');
 $router->get('/searchList', 'Dictionary\DictionaryController@searchList');
 
+$router->prefix('users')->group(function () use ($router) {
+    $router->post('register', 'Client\Users\UsersController@register');
+
+});
+
 
 /** có thể không đăng nhập */
 $router->middleware('loginOrNot')->group(function () use ($router){
