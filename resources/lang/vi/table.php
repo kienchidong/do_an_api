@@ -12,5 +12,9 @@ return [
     'questions' => [
         'name' => 'Tên',
         'question' => 'Câu Hỏi',
+    ],
+    'video' => [
+        'link' => 'link',
+        'type' => 'type',
     ]
 ];

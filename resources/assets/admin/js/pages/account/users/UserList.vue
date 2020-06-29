@@ -145,7 +145,7 @@
                         this.table.data = response.data.lists;
                     }
                 }).catch(err => {
-                   console.log(err);
+                    console.log(err);
                 });
             },
             tableIndex(index,key){

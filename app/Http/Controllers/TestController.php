@@ -25,26 +25,28 @@ class TestController extends Controller
      /*   $group = QuestionGroupModel::paginate(10);
         return $this->successResponseMessage(new GroupQuestionsCollection($group), 200, 'get success');*/
      /*return Excel::download(new SimpleQuestionsExport(), 'simpleQuestion.xlsx');*/
-        /*$html = file_get_contents('https://www.youtube.com/watch?v=EvK4xyQNVR0');
-        dd($html);
-        $meta = $html->find('meta[property=og:image]', 0);*/
+        $html = file_get_html('https://www.youtube.com/watch?v=2cblKNffVPg');
 
-       /* $url = "https://kienchidong.github.io/kien/";
+        $meta = $html->find('meta[property=og:title]', 0);
+
+        dd($meta->content);
+       /* $url = "https://www.youtube.com/watch?v=2cblKNffVPg";
         $headers = file_get_contents($url);
 
-        echo $headers;*/
-        /*if(strpos($headers[0],'404') === false)
+        dd($headers->find('meta[property=og:title]',0));
+        if(strpos($headers[0],'404') === false)
         {
             echo "URL Exists";
         }
         else
         {
             echo "URL Not Exists";
-        }*/
+        }
+        die();*/
         //echo $meta->content;
 
-        $group = QuestionGroupModel::paginate(10);
+        /*$group = QuestionGroupModel::paginate(10);
 
-        return view('Excel.GroupQuestions', compact('group'));
+        return view('Excel.GroupQuestions', compact('group'));*/
     }
 }

@@ -14,4 +14,6 @@ return [
         'listGroup' => 'Nhóm câu hỏi',
         'editGroup' => 'Sửa Nhóm câu hỏi',
     ],
+    'typeVideo' => 'Loại Video',
+    'Video' => 'Video'
 ];

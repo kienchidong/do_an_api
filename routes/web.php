@@ -15,7 +15,7 @@
      return view('welcome');
  });*/
 
-$router->get('getListNews', 'Admin\NewsController@getList');
+
 $router->get('test', 'TestController@test');
 $router->get('deleteCate/{id}', 'Admin\CateNewsController@destroy');
 $router->prefix('tests')->group(function () use ($router){
@@ -42,6 +42,11 @@ $router->group(['middleware' => 'locale'], function () use ($router) {
         $router->get('logoutAdmin', 'Auth\Admin\AdminLoginController@logout')->name('admin.logout');
 
         $router->prefix('/')->middleware('auth:admin')->group(function () use ($router) {
+
+            $router->prefix('home')->group(function () use ($router) {
+                $router->post('getHome', 'Auth\Admin\HomeAdminController@getHome');
+            });
+
             $router->prefix('adminAccount')->group(function () use ($router) {
                 $router->post('getlist', 'Admin\AdminAccountController@getList');
                 $router->post('createAdmin', 'Admin\AdminAccountController@store');
@@ -104,6 +109,21 @@ $router->group(['middleware' => 'locale'], function () use ($router) {
                 });
             });
 
+            /** type of video */
+            $router->prefix('typeVideo')->group(function () use ($router) {
+                $router->post('getList', 'Video\TypeVideoController@getList');
+
+                $router->post('store', 'Video\TypeVideoController@store');
+                $router->post('edit/{id}', 'Video\TypeVideoController@update');
+                $router->post('delete/{id}', 'Video\TypeVideoController@destroy');
+            });
+            $router->prefix('video')->group(function () use ($router) {
+                $router->post('getList', 'Video\VideoController@getList');
+
+                $router->post('store', 'Video\VideoController@store');
+                $router->post('edit/{id}', 'Video\VideoController@update');
+                $router->post('delete/{id}', 'Video\VideoController@destroy');
+            });
             /**
              * route VueJs phải ở dưới cùng
              * */

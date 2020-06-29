@@ -69,6 +69,12 @@ export default {
             "female": "FeMale",
             "lgbt": "In the Third"
         },
+        "home": {
+            "users": "Users",
+            "news": "News",
+            "exams": "Exams",
+            "more": "More Info"
+        },
         "pagination": {
             "previous": "&laquo; Previous",
             "next": "Next &raquo;"
@@ -134,7 +140,9 @@ export default {
                 "listSimple": "Simple Questions",
                 "listGroup": "Group Questions",
                 "editGroup": "Edit Group Questions"
-            }
+            },
+            "typeVideo": "Type of Video",
+            "Video": "Video"
         },
         "sidebar": {
             "chose-lang": "Language",
@@ -167,6 +175,10 @@ export default {
             "questions": {
                 "name": "Name",
                 "question": "Question"
+            },
+            "video": {
+                "link": "link",
+                "type": "type"
             }
         },
         "validation": {
@@ -352,6 +364,12 @@ export default {
             "female": "Nữ",
             "lgbt": "Giới tính thứ 3"
         },
+        "home": {
+            "users": "Người Dùng",
+            "news": "Bài Viết",
+            "exams": "Đề kiểm tra",
+            "more": "Chi Tiết"
+        },
         "messages": {
             "error": {
                 "AUTHORIZATIONEXCEPTION": "Bạn không có quyền thực hiện hành động này!",
@@ -430,7 +448,9 @@ export default {
                 "listSimple": "Câu Hỏi Đơn",
                 "listGroup": "Nhóm câu hỏi",
                 "editGroup": "Sửa Nhóm câu hỏi"
-            }
+            },
+            "typeVideo": "Loại Video",
+            "Video": "Video"
         },
         "sidebar": {
             "chose-lang": "Ngôn ngữ",
@@ -463,6 +483,10 @@ export default {
             "questions": {
                 "name": "Tên",
                 "question": "Câu Hỏi"
+            },
+            "video": {
+                "link": "link",
+                "type": "type"
             }
         },
         "validation": {
