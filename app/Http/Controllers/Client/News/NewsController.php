@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client\News;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\News\NewsCollection;
 use App\Http\Resources\News\NewsDetailResource;
 use App\Model\News\CommentsModel;
 use App\Model\News\LikeModel;
@@ -17,6 +18,16 @@ class NewsController extends Controller
     //
     use ApiResponser;
 
+
+    public function getHotNews()
+    {
+        $news = NewsModel::withCount('likes', 'comments')
+            ->orderBy('likes_count', 'desc')
+            ->orderBy('comments_count', 'desc')
+            ->paginate();
+        return $this->successResponseMessage(new NewsCollection($news), '200', 'success');
+
+    }
     public function getNews(Request $request)
     {
         $request->validate([

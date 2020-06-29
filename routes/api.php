@@ -43,6 +43,7 @@ $router->middleware('loginOrNot')->group(function () use ($router){
         $router->post('getNews', 'Client\News\NewsController@getNews');
 
         $router->post('getCommentByNews', 'Client\News\CommentController@getComment');
+        $router->post('getHotNews', 'Client\News\NewsController@getHotNews');
     });
 
     /** test */
