@@ -37,7 +37,7 @@ class AdminLoginController extends Controller
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
 
             //nếu thành công thì chuyển hướng về view dashboard của admin
-            return redirect()->intended(route('admin.index', ['all' => 'home']))->with('thongbao', 'Đăng nhập thành công');
+            return redirect()->intended(route('admin.index', ['all' => 'dashboard']))->with('thongbao', 'Đăng nhập thành công');
 
         } else {
             //thất bại

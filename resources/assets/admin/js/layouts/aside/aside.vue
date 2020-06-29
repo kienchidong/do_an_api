@@ -40,6 +40,23 @@
                 </li>
                 <li class="treeview">
                     <a href="#">
+                        <i class="fa fa-file-text" aria-hidden="true"></i> <span>Videos</span>
+                        <span class="pull-right-container">
+                          <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li>
+                            <router-link to="/type-video.html"><i class="fa fa-bookmark" aria-hidden="true"></i><span>Types of Video</span></router-link>
+                        </li>
+                        <li>
+                            <router-link to="/list-video.html"><i class="fa fa-newspaper-o" aria-hidden="true"></i><span>Videos</span>
+                            </router-link>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
                         <i class="fa fa-question-circle-o" aria-hidden="true"></i> <span>Questions</span>
                         <span class="pull-right-container">
                           <i class="fa fa-angle-left pull-right"></i>

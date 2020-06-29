@@ -26,10 +26,15 @@ class CateNewsController extends Controller
 
     public function getListNews(Request $request)
     {
-        $request->validate([
-           'slug' => 'bail|required|exists:cate_news,slug',
-        ]);
-        $news = CateNewsModel::whereSlug($request->slug)->first()->news()->paginate(10);
+        $slug = $request->get('slug', '');
+        if($slug == ''){
+            $news = NewsModel::withCount('likes', 'comments')
+                ->orderBy('likes_count', 'desc')
+                ->orderBy('comments_count', 'desc')
+                ->paginate(10);
+        } else {
+            $news = CateNewsModel::whereSlug($request->slug)->first()->news()->paginate(10);
+        }
        return $this->successResponseMessage(new NewsCollection($news), 200, 'get success');
     }
 }

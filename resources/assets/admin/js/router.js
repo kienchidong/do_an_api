@@ -17,6 +17,10 @@ import ListSimpleQuestions from "./pages/exams/questions/ListSimpleQuestions";
 import ListGroupQuestions from "./pages/exams/questions/ListGroupQuestions";
 import EditGroupComponent from "./pages/exams/questions/EditGroupComponent";
 
+/** video*/
+import TypeVideo from "./pages/video/TypeVideo";
+import ListVideo from "./pages/video/ListVideo";
+
 export const routes = [
     {
         path: "/",
@@ -114,6 +118,22 @@ export const routes = [
                 path: "News-Edit/*",
                 name: "router-name.newsEdit",
                 component: CreateNews,
+                props: true,
+                meta: {permissions: "all"}
+
+            },
+            {
+                path: "type-video.html",
+                name: "router-name.typeVideo",
+                component: TypeVideo,
+                props: true,
+                meta: {permissions: "all"}
+
+            },
+            {
+                path: "list-video.html",
+                name: "router-name.Video",
+                component: ListVideo,
                 props: true,
                 meta: {permissions: "all"}
 

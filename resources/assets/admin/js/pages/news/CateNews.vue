@@ -1,7 +1,6 @@
 <template>
     <div class="root">
         <section class="content">
-
             <!-- SELECT2 EXAMPLE -->
             <div class="box box-default">
                 <div class="box-header with-border">
@@ -70,7 +69,6 @@
 
         <!--modal-->
         <b-modal id="create-modal" :title="modal.title">
-
             <div class="d-block ">
                 <b-form-group
                     id="input-group-1"

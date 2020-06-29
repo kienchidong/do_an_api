@@ -12,5 +12,9 @@ return [
     'questions' => [
         'name' => 'Name',
         'question' => 'Question',
+    ],
+    'video' => [
+        'link' => 'link',
+        'type' => 'type',
     ]
 ];
