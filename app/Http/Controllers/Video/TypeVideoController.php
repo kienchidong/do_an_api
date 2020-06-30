@@ -57,13 +57,19 @@ class TypeVideoController extends Controller
 
     public function getListVideo(Request $request)
     {
-
         $slug = $request->get('slug', '');
         if($slug == ''){
             $videos = VideoModel::paginate(10);
         } else {
             $videos = TypeVideoModel::whereSlug($request->slug)->first()->videos()->paginate(10);
         }
-        return $this->successResponse(new VideoCollection($videos), 200);
+        return $this->successResponseMessage(new VideoCollection($videos), 200, 'success');
+    }
+
+    public function getListMenu()
+    {
+        $type = TypeVideoModel::withCount('videos')->orderBy('videos_count','desc')->paginate(5);
+
+        return $this->successResponseMessage(new TypeVideoCollection($type), 200,'success');
     }
 }
