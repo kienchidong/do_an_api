@@ -16,6 +16,14 @@ use Illuminate\Http\Request;
 $router->middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+$router->middleware('guest:api')->post('login', 'Client\ClientController@login');
+
+$router->get('/searchWord', 'Dictionary\DictionaryController@search');
+$router->get('/searchList', 'Dictionary\DictionaryController@searchList');
+
+$router->prefix('users')->group(function () use ($router) {
+    $router->post('register', 'Client\Users\UsersController@register');
+});
 
 /** bắt buộc phải đăng nhập*/
 $router->middleware('jwt.auth')->group(function () use ($router){
@@ -26,15 +34,14 @@ $router->middleware('jwt.auth')->group(function () use ($router){
         $router->post('likeNews', 'Client\News\NewsController@likeNews');
         $router->post('createComment', 'Client\News\CommentController@createComment');
     });
-});
 
-$router->middleware('guest:api')->post('login', 'Client\ClientController@login');
+    $router->prefix('result')->group(function () use ($router){
+       $router->post('store', 'Result\ResultController@store');
+    });
 
-$router->get('/searchWord', 'Dictionary\DictionaryController@search');
-$router->get('/searchList', 'Dictionary\DictionaryController@searchList');
-
-$router->prefix('users')->group(function () use ($router) {
-    $router->post('register', 'Client\Users\UsersController@register');
+    $router->prefix('feedback')->group(function () use ($router){
+       $router->post('store', 'Feedback\FeedbackController@store');
+    });
 });
 
 
