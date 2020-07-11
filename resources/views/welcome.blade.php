@@ -34,9 +34,9 @@
 <script src="{{ asset('admin/lte/js/library.min.js') }}"></script>
 <script>
     $('.sidebar-menu').children('li').click(function () {
-        $('.menu-open').removeClass('menu-open');
         $('.active').removeClass('active');
-        $(this).addClass('active');
+        $(this).addClass('active')
+
     })
 </script>
 </body>

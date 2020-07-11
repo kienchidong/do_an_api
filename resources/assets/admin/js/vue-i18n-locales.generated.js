@@ -142,7 +142,8 @@ export default {
                 "editGroup": "Edit Group Questions"
             },
             "typeVideo": "Type of Video",
-            "Video": "Video"
+            "Video": "Video",
+            "Feedback": "Feedback"
         },
         "sidebar": {
             "chose-lang": "Language",
@@ -179,6 +180,10 @@ export default {
             "video": {
                 "link": "link",
                 "type": "type"
+            },
+            "feedback": {
+                "content": "Content",
+                "user": "User Create"
             }
         },
         "validation": {
@@ -450,7 +455,8 @@ export default {
                 "editGroup": "Sửa Nhóm câu hỏi"
             },
             "typeVideo": "Loại Video",
-            "Video": "Video"
+            "Video": "Video",
+            "Feedback": "Phản Hồi"
         },
         "sidebar": {
             "chose-lang": "Ngôn ngữ",
@@ -487,6 +493,10 @@ export default {
             "video": {
                 "link": "link",
                 "type": "type"
+            },
+            "feedback": {
+                "content": "Nội Dung",
+                "user": "Người Tạo"
             }
         },
         "validation": {

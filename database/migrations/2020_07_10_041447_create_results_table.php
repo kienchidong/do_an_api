@@ -22,6 +22,7 @@ class CreateResultsTable extends Migration
             $table->integer('level');
             $table->boolean('is_simple')->default(0);
             $table->boolean('is_group')->default(0);
+            $table->text('answer_detail');
             $table->timestamps();
         });
     }

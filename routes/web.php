@@ -124,6 +124,13 @@ $router->group(['middleware' => 'locale'], function () use ($router) {
                 $router->post('edit/{id}', 'Video\VideoController@update');
                 $router->post('delete/{id}', 'Video\VideoController@destroy');
             });
+
+            /**
+             * feedback
+             */
+            $router->prefix('feedback')->group(function () use ($router){
+                $router->post('getList', 'Feedback\FeedbackController@getList');
+            });
             /**
              * route VueJs phải ở dưới cùng
              * */

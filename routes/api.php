@@ -37,10 +37,15 @@ $router->middleware('jwt.auth')->group(function () use ($router){
 
     $router->prefix('result')->group(function () use ($router){
        $router->post('store', 'Result\ResultController@store');
+
+       $router->post('getListByUser', 'Result\ResultController@getListByUser');
+
     });
 
     $router->prefix('feedback')->group(function () use ($router){
        $router->post('store', 'Feedback\FeedbackController@store');
+
+       $router->post('getList', 'Feedback\FeedbackController@getList');
     });
 });
 
