@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Model\ResultModel;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -53,5 +54,10 @@ class User extends Authenticatable implements JWTSubject
         $this->status = $status;
         $this->save();
         return $this->name;
+    }
+
+    public function result()
+    {
+        return $this->hasMany(ResultModel::class, 'user_id', 'id');
     }
 }

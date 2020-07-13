@@ -14,9 +14,9 @@ class VideoController extends Controller
 
     public function getList(Request $request)
     {
-
-        $videos = VideoModel::paginate(10);
-        return $this->successResponse(new VideoCollection($videos), 200);
+        $size = $request->get('size', 10);
+        $videos = VideoModel::orderBy('created_at', 'desc')->paginate($size);
+        return $this->successResponseMessage(new VideoCollection($videos), 200, 'success');
     }
 
     public function store(Request $request)

@@ -16,5 +16,9 @@ return [
     'video' => [
         'link' => 'link',
         'type' => 'type',
+    ],
+    'feedback' => [
+        'content' => 'Nội Dung',
+        'user' => 'Người Tạo',
     ]
 ];

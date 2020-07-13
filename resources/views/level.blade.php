@@ -3,52 +3,36 @@
         <thead>
         <tr style="height: 18px;">
             <th style="height: 18px; width: 385px;"><strong>Cấp độ*<br /></strong></th>
-            <th style="height: 18px; width: 181px;"><strong>TOEFL</strong></th>
-            <th style="height: 18px; width: 160px;"><strong>IELTS</strong></th>
             <th style="height: 18px; width: 197px;"><strong>TOEIC</strong></th>
         </tr>
         </thead>
         <tbody>
         <tr style="height: 18px;">
             <td style="height: 18px; width: 385px;">Advanced</td>
-            <td style="height: 18px; width: 181px;">94-120</td>
-            <td style="height: 18px; width: 160px;">8.0-9.0</td>
             <td style="height: 18px; width: 197px;">905-990</td>
         </tr>
         <tr style="height: 18px;">
             <td style="height: 18px; width: 385px;">Low Advanced</td>
-            <td style="height: 18px; width: 181px;">79-93</td>
-            <td style="height: 18px; width: 160px;">6.5-7.5</td>
             <td style="height: 18px; width: 197px;">785-900</td>
         </tr>
         <tr style="height: 18px;">
             <td style="height: 18px; width: 385px;">High Intermediate</td>
-            <td style="height: 18px; width: 181px;">60-78</td>
-            <td style="height: 18px; width: 160px;">5.5-6.0</td>
             <td style="height: 18px; width: 197px;">705-780</td>
         </tr>
         <tr style="height: 18px;">
             <td style="height: 18px; width: 385px;">Intermediate</td>
-            <td style="height: 18px; width: 181px;">46-59</td>
-            <td style="height: 18px; width: 160px; text-align: left;">4.0-5.0</td>
             <td style="height: 18px; width: 197px;">605-700</td>
         </tr>
         <tr style="height: 18px;">
             <td style="height: 18px; width: 385px;">Low Intermediate</td>
-            <td style="height: 18px; width: 181px;">32-45</td>
-            <td style="height: 18px; width: 160px;">3.5-4.0</td>
             <td style="height: 18px; width: 197px;">405-600</td>
         </tr>
         <tr style="height: 18px;">
             <td style="height: 18px; width: 385px;">High Beginner</td>
-            <td style="height: 18px; width: 181px;">0-31</td>
-            <td style="height: 18px; width: 160px;">0-3.5</td>
             <td style="height: 18px; width: 197px;">255-400</td>
         </tr>
         <tr style="height: 18px;">
             <td style="height: 18px; width: 385px;">Beginner</td>
-            <td style="height: 18px; width: 181px;">0-31</td>
-            <td style="height: 18px; width: 160px;">0-2.0</td>
             <td style="height: 18px; width: 197px;">0-250</td>
         </tr>
         </tbody>
