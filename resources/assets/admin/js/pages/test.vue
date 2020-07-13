@@ -90,7 +90,7 @@
             uploadAudio(){
                 let form = new FormData();
                 form.append('file', this.abc);
-                axios.post('upload', form, {
+                axios.post('/uploadFile', form, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                     }

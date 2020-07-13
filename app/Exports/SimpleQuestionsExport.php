@@ -13,10 +13,19 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 class SimpleQuestionsExport implements FromView, ShouldAutoSize
 {
     public $label =['A', 'B', 'C', 'D'];
+    public $size = 0;
+
+    public function __construct($size = 10){
+        $this->size = $size;
+    }
 
     public function view(): View
     {
-        $question = QuestionModel::whereNull('group_id')->get();
+        $size = $this->size;
+        $question = QuestionModel::whereNull('group_id')
+        ->when($size != 0, function($query) use ($size){
+            return $query->limit($size);
+        })->get();
         $array = [];
         foreach ($question as $key =>$value){
             $array[$key]['question']= $value->question;
@@ -25,6 +34,7 @@ class SimpleQuestionsExport implements FromView, ShouldAutoSize
                 if($answer->status){
                     $array[$key]['right']= $this->label[$answerKey];
                 }
+                $array[$key]['explain']= $answer->explain;
             }
         }
 

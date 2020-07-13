@@ -8,6 +8,7 @@
                         <div class="box-header">
                             <h3 class="box-title">
                                 <router-link class="btn btn-primary" to="Questions-Create">Thêm Mới</router-link>
+                                <a href=""></a>
                             </h3>
 
                             <div class="box-tools">

@@ -7,6 +7,8 @@ use App\Http\Requests\QuestionRequest;
 use App\Http\Resources\Questions\QuestionsCollection;
 use App\Model\Question\QuestionModel;
 use Illuminate\Http\Request;
+use App\Exports\SimpleQuestionsExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class QuestionsController extends Controller
 {
@@ -35,5 +37,12 @@ class QuestionsController extends Controller
 
     public function import(Request $request){
         return response()->json($request->all());
+    }
+
+    public function Export(Request $request){
+        $size = $request->get('size', 10);
+        $type = $request->get('type', 'xlsx');
+        $fileName = 'simpleQuestion.'.$type;
+        return Excel::download(new SimpleQuestionsExport($size), $fileName);
     }
 }
