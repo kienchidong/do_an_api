@@ -59,6 +59,9 @@ $router->middleware('loginOrNot')->group(function () use ($router){
     $router->prefix('tests')->group(function () use ($router) {
         $router->post('GetListByLevel', 'Client\Tests\TestController@getList');
         $router->post('getDetail', 'Client\Tests\TestController@getDetail');
+
+        $router->post('getListReading', 'Client\Tests\TestController@getListReading');
+        $router->post('getDetailReading', 'Client\Tests\TestController@getDetailReading');
     });
 
     /** videos */
