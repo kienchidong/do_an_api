@@ -78,6 +78,8 @@ $router->middleware('loginOrNot')->group(function () use ($router){
         $router->post('getListType', 'Video\TypeVideoController@getListMenu');
 
         $router->post('GetListByType', 'Video\TypeVideoController@getListVideo');
+
+        $router->post('GetListVideo', 'Video\VideoController@getList');
         $router->post('getDetail', 'Client\Tests\TestController@getDetail');
     });
 

@@ -124,9 +124,10 @@
             firstLoad() {
                 this.formLoad.page = this.currentPage;
                 axios.post('video/getList', this.formLoad).then(response => {
-                    this.totalPage = response.data.total_page;
-                    if (response.data.lists.length > 0) {
-                        this.table.data = response.data.lists;
+                    let {data} = response.data;
+                    this.totalPage = data.total_page;
+                    if (data.lists.length > 0) {
+                        this.table.data = data.lists;
                         this.table.isNull = null;
                     } else {
                         this.table.isNull = 'Không có Video';

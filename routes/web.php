@@ -17,6 +17,7 @@
 
 
 $router->get('test', 'TestController@test');
+$router->post('/upload', 'TestController@upload');
 $router->get('deleteCate/{id}', 'Admin\CateNewsController@destroy');
 $router->prefix('tests')->group(function () use ($router){
     $router->get('getList', 'Admin\Test\TestController@getList');

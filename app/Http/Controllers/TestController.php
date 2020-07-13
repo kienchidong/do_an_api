@@ -49,4 +49,16 @@ class TestController extends Controller
 
         return view('Excel.GroupQuestions', compact('group'));*/
     }
+
+    public function upload(Request $request)
+    {
+        /*if ($request->hasFile('file')) {
+            $file = $request->file;
+
+            $file->move('upload', $file->getClientOriginalName());
+            return response()->json(['ok' => 'ok']);
+        }*/
+        return response()->json(['ok' => 'ok']);
+        return response()->json($request->all());
+    }
 }
