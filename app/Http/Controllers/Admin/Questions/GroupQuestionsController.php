@@ -8,15 +8,21 @@ use App\Http\Resources\Questions\GroupQuestionsCollection;
 use App\Http\Resources\Questions\GroupQuestionsResource;
 use App\Model\Question\QuestionGroupModel;
 use App\Traits\ApiResponser;
+use App\Traits\FileUpload;
 use Illuminate\Http\Request;
 
 class GroupQuestionsController extends Controller
 {
     //
     use ApiResponser;
-    public function store(QuestionGroupRequest $request){
-        $group = QuestionGroupModel::create($request->all());
-        return $this->successResponseMessage($group, '200', 'create success!');
+    use FileUpload;
+    public function store(Request $request){
+        $input= $request->all();
+        if ($request->hasFile('file')) {
+            $input['audio']= $this->uploadFile('upload', $request->file);
+        }
+        $group = QuestionGroupModel::create($input);
+        return $this->successResponseMessage($input, '200', 'create success!');
     }
 
     public function getList(){

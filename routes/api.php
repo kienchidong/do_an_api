@@ -16,6 +16,9 @@ use Illuminate\Http\Request;
 $router->middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+$router->post('uploadFile', 'TestController@upload');
+
 $router->middleware('guest:api')->post('login', 'Client\ClientController@login');
 
 $router->get('/searchWord', 'Dictionary\DictionaryController@search');

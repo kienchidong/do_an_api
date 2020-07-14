@@ -9,6 +9,7 @@ use App\Http\Resources\Questions\QuestionsCollection;
 use App\Model\Question\QuestionGroupModel;
 use App\Model\Question\QuestionModel;
 use App\Traits\ApiResponser;
+use App\Traits\FileUpload;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -16,6 +17,7 @@ class TestController extends Controller
 {
     //
     use ApiResponser;
+    use FileUpload;
 
     public $label =['A', 'B', 'C', 'D'];
     public function test(){
@@ -66,8 +68,8 @@ class TestController extends Controller
         if ($request->hasFile('file')) {
             $file = $request->file;
 
-            $file->move('upload', $file->getClientOriginalName());
-            return response()->json(['ok' => 'ok']);
+            $abc = $this->uploadFile('upload', $file);
+            return response()->json(['ok' => $abc]);
         }
         return response()->json(['ok' => 'ok1']);
         return response()->json($request->all());
