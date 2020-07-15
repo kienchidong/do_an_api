@@ -19,7 +19,7 @@ class HomeController extends Controller
         $news = NewsModel::withCount('likes', 'comments')
             ->orderBy('likes_count', 'desc')
             ->orderBy('comments_count', 'desc')
-            ->paginate(4);
+            ->paginate(3);
 
         return $this->successResponseMessage(new NewsCollection($news), 200, 'get success');
     }
