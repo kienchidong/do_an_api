@@ -25,7 +25,7 @@ $router->prefix('tests')->group(function () use ($router){
 });
 
 $router->group(['middleware' => 'locale'], function () use ($router) {
-    $router->get('change-language/{language}', 'LanguageController@changeLanguage')->name(change_language);
+    $router->get('change-language/{language}', 'LanguageController@changeLanguage')->name('user.change-language');
     Auth::routes();
     /* Route cho admin */
 

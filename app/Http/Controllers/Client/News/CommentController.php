@@ -37,7 +37,7 @@ class CommentController extends Controller
             'news_id' => 'bail|required|exists:news,id',
         ]);
 
-        $news = NewsModel::find($request->news_id)->comments()->paginate(5);
+        $news = NewsModel::find($request->news_id)->comments()->orderBy('created_at', 'desc')->paginate(5);
         return $this->successResponseMessage(new CommentCollection($news), 200, 'success');
 
     }
