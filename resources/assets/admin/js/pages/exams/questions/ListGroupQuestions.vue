@@ -80,6 +80,11 @@
                             <b-container class="bv-example-row">
                                 <b>{{ modalDetail.name }}</b>
                                 <hr>
+                                <audio controls v-if="modalDetail.audio != 0">
+                                    <source src=" http://127.0.0.1:8000/upload/audio-1594734507-con-nguoi.mp3" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>
+
                                 <b-row>
                                     <b-col sm="12" md="12">
                                         <b-form inline>
@@ -90,7 +95,8 @@
                                     <b-col v-for="(question, indexQuestions) in modalDetail.questions"
                                            :key="indexQuestions" sm="12"
                                            md="6" align="left">
-                                        <b>{{indexQuestions+1}}: {{ question.question}}</b>
+                                        <b>{{indexQuestions+1}}: {{ question.question}}</b><br>
+                                        <img v-if="question.image != 0" :src="question.image" width="50%" alt="">
                                         <b-row>
                                             <b-col v-for="(item, index) in question.answers" :key="index" sm="12"
                                                    md="6">
@@ -160,6 +166,7 @@
                     name: null,
                     describe: null,
                     questions: [],
+                    audio: null,
                 },
                 editForm: [],
             }
@@ -181,6 +188,7 @@
                 this.formLoad.page = this.currentPage;
                 axios.post('question/group/getList', this.formLoad).then(response => {
                     let {data} = response;
+                    console.log(data)
                     this.totalPage = data.total_page;
                     this.table.data = data.lists;
                 }).catch(err => {
@@ -212,6 +220,7 @@
                 this.modalDetail.name = item['name'];
                 this.modalDetail.describe = item['describe'];
                 this.modalDetail.questions = item['questions'];
+                this.modalDetail.audio = item['audio'];
 
                 this.$swal({
                     width: 1000,

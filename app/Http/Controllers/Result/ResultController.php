@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Result;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Result\ResultResource;
+use App\Model\Question\QuestionGroupModel;
 use App\Model\Question\QuestionModel;
 use App\Model\ResultModel;
 use App\Traits\ApiResponser;
@@ -17,16 +19,24 @@ class ResultController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'question_id' => 'bail|required|numeric',
+            'test_id' => 'bail|required|numeric',
             'point' => 'bail|required',
             'time' => 'bail|required',
-            'level' => 'bail|required',
         ]);
 
+        if($request->is_simple == 1){
+          $level = QuestionModel::find($request->test_id)->level;
+        }else{
+          $level = QuestionGroupModel::find($request->test_id)->level;
+        }
+        $request->request->set('level', $level);
         $request->request->set('user_id', Auth::id());
         ResultModel::create($request->all());
 
         return $this->successResponseMessage([], 200, 'create success');
+
+       /* $r = ResultModel::find(1);
+        return $this->successResponseMessage(new ResultResource($r), 200, 'create success');*/
     }
 
     public function getListByUser(Request $request)

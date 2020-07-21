@@ -21,6 +21,7 @@ class TestResource extends JsonResource
             'status' => $this->status,
             'number_question' => sizeof(json_decode($this->list_question)),
             'list_question' => $this->Questions(),
+            'time' => $this->time,
         ];
     }
 }

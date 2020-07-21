@@ -39,7 +39,8 @@ class TestController extends Controller
 
     public function getListReading(Request $request)
     {
-        $read = QuestionGroupModel::paginate(10);
+        $type= $request->get('type', 0);
+        $read = QuestionGroupModel::whereType($type)->paginate(10);
 
         return $this->successResponseMessage(new GroupQuestionsCollection($read), 200,"success");
     }

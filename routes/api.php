@@ -76,7 +76,12 @@ $router->middleware('loginOrNot')->group(function () use ($router){
         $router->post('getDetail', 'Client\Tests\TestController@getDetail');
 
         $router->post('getListReading', 'Client\Tests\TestController@getListReading');
+        $router->post('getListListening', 'Client\Tests\TestController@getListListening');
+
+
         $router->post('getDetailReading', 'Client\Tests\TestController@getDetailReading');
+
+        $router->post('createResult', 'Result\ResultController@store');
     });
 
     /** videos */

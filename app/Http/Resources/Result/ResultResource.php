@@ -19,7 +19,10 @@ class ResultResource extends JsonResource
         return [
             'id' => $this->id,
             'user' => new UserDetailResource($this->user),
-            'code' => $code
+            'code' => $code,
+            'point' => $this->point,
+            'time' => $this->time,
+            'answer_detail' => $this->answerHistory()
         ];
     }
 }

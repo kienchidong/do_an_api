@@ -15,12 +15,17 @@ class GroupQuestionsResource extends JsonResource
      */
     public function toArray($request)
     {
+        $default_folder = asset('upload') . '/';
+        $audio = ($this->audio != null) ? $default_folder.$this->audio : null;
         return [
             'group_id' => $this->id,
             'name' => $this->name,
             'level' => $this->level,
             'describe' => $this->describe,
-            'questions' => new GroupAnswerCollection($this->questions)
+            'audio' => $audio,
+            'questions' => new GroupAnswerCollection($this->questions),
+            'type' => $this->type,
+            'time' => $this->time,
         ];
     }
 }

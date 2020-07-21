@@ -102,6 +102,18 @@
                         ></b-form-input>
                     </b-form-group>
                 </b-col>
+                <b-col cols="12">
+                    <b-form-group
+                        label="Image:"
+                    >
+                        <b-form-file
+                            placeholder="Choose a file or drop it here..."
+                            drop-placeholder="Drop file here..."
+                            v-on:change="uploadFile"
+                        ></b-form-file>
+                        <img :src="currentImage" width="50%" alt="">
+                    </b-form-group>
+                </b-col>
                 <b-col sm="12" md="12" class="text-center">
                     <hr>
                     <b-button v-on:click="SubmitFrom">Submit</b-button>
@@ -128,8 +140,10 @@
                     question: null,
                     answers: [],
                     level: null,
-                    explain: ''
+                    explain: '',
+                    image: null
                 },
+                currentImage: null,
             }
         },
         watch: {
@@ -143,11 +157,12 @@
             },
         },
         created() {
-            console.log(this.editQuestion)
+
             this.formData.level = (this.group_level) ? this.group_level : null;
             if (this.editQuestion && this.editQuestion.question) {
                 this.formData.question = this.editQuestion.question;
                 this.formData.explain = this.editQuestion.explain;
+                this.currentImage = this.editQuestion.image;
                 this.answer1 = this.editQuestion.answers[0].answer;
                 this.answer2 = this.editQuestion.answers[1].answer;
                 this.answer3 = (this.editQuestion.answers[2]) ? this.editQuestion.answers[2].answer : null;
@@ -157,6 +172,7 @@
                         this.rightAnswer = index;
                     }
                 });
+                console.log(this.formData)
             }
             this.getLevel();
         },
@@ -180,6 +196,20 @@
                     this.level = response.data;
                 })
             },
+            uploadFile(e) {
+                let files = e.target.files || e.dataTransfer.files;
+                let arrayType = ['image/jpeg', 'image/png', 'image/jpg'];
+                if (!arrayType.includes(files[0].type)) {
+                    e.target.value = '';
+                } else {
+                    let reader = new FileReader();
+                    reader.onload = (e) => {
+                        this.formData.image = e.target.result;
+                        this.currentImage = e.target.result;
+                    }
+                    reader.readAsDataURL(files[0]);
+                }
+            },
             SubmitFrom() {
                 let type = '';
                 let message = '';
@@ -193,6 +223,7 @@
                 this.formData.answers = this.answer;
                 this.formData.group_id = this.group_id;
                 axios.post(type, this.formData).then(response => {
+                    console.log(response)
                     alertify.success(message);
                     this.$emit('nextStep', this.group_step + 1);
                 }).catch(err => {

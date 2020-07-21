@@ -16,12 +16,13 @@ class CreateResultsTable extends Migration
         Schema::create('results', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id');
-            $table->bigInteger('question_id');
+            $table->bigInteger('test_id');
             $table->string('point');
             $table->string('time');
             $table->integer('level');
             $table->boolean('is_simple')->default(0);
-            $table->boolean('is_group')->default(0);
+            $table->boolean('is_read')->default(0);
+            $table->boolean('is_listen')->default(0);
             $table->text('answer_detail');
             $table->timestamps();
         });
