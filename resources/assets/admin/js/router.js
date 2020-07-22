@@ -20,6 +20,8 @@ import EditGroupComponent from "./pages/exams/questions/EditGroupComponent";
 /** video*/
 import TypeVideo from "./pages/video/TypeVideo";
 import ListVideo from "./pages/video/ListVideo";
+import ListFeedBack from "./pages/feedback/ListFeedBack";
+import ListResult from "./pages/result/ListResult"
 
 export const routes = [
     {
@@ -134,6 +136,22 @@ export const routes = [
                 path: "list-video.html",
                 name: "router-name.Video",
                 component: ListVideo,
+                props: true,
+                meta: {permissions: "all"}
+
+            },
+            {
+                path: "list-feedback.html",
+                name: "router-name.Feedback",
+                component: ListFeedBack,
+                props: true,
+                meta: {permissions: "all"}
+
+            },
+            {
+                path: "list-result.html",
+                name: "router-name.Result",
+                component: ListResult,
                 props: true,
                 meta: {permissions: "all"}
 

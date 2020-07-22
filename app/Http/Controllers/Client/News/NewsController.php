@@ -19,8 +19,9 @@ class NewsController extends Controller
     use ApiResponser;
 
 
-    public function getHotNews()
+    public function getHotNews(Request $request)
     {
+        $size = $request->get('size', 3);
         $news = NewsModel::withCount('likes', 'comments')
             ->orderBy('likes_count', 'desc')
             ->orderBy('comments_count', 'desc')

@@ -15,5 +15,7 @@ return [
         'editGroup' => 'Sửa Nhóm câu hỏi',
     ],
     'typeVideo' => 'Loại Video',
-    'Video' => 'Video'
+    'Video' => 'Video',
+    'Feedback' => 'Phản Hồi',
+    'Result' => 'Kết Quả HỌc Viên'
 ];

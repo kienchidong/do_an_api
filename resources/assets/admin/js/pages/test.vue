@@ -16,7 +16,13 @@
                         </div>
                     </div>
                 </div>
+                <section>
+                    <form action="" method="post" id="formUpload" enctype="multipart/form-data">
+                        <input type="file" name="file" ref="file" v-on:change="uploadFile">
+                    </form>
 
+                </section>
+                <button v-on:click="uploadAudio">tải lên</button>
 
             </div>
         </section>
@@ -46,6 +52,7 @@
                 },
                 myValue: '',
                 myOptions: ['op1', 'op2', 'op3'],
+                abc: null,
             }
         },
         methods: {
@@ -77,6 +84,20 @@
                     }
                 });
             },
+            uploadFile(e){
+                this.abc = this.$refs.file.files[0];
+            },
+            uploadAudio(){
+                let form = new FormData();
+                form.append('file', this.abc);
+                axios.post('/uploadFile', form, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    }
+                }).then(response =>{
+                    console.log(response)
+                })
+            }
         },
 
     }

@@ -1,7 +1,6 @@
 <template>
     <div class="root">
         <section class="content">
-
             <!-- SELECT2 EXAMPLE -->
             <div class="row">
                 <div class="col-12">

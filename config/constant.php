@@ -1,5 +1,6 @@
 <?php
 
+const change_language = 'user.change-language';
 const client = [
     'index' => 'client.index',
 ];

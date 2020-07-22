@@ -16,8 +16,6 @@ class CreateFeedBacksTable extends Migration
         Schema::create('feed_backs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('user_id');
-            $table->string('user_name');
-            $table->string('email');
             $table->text('content');
             $table->timestamps();
         });

@@ -28,17 +28,16 @@ class Controller extends BaseController
         return $str . '-' . time();
     }
 
-    public function saveImgBase64($param, $folder)
+    public function saveImgBase64($param, $folder, $name = "image.jpg")
     {
         if (!is_dir('images/' . $folder)) {
             mkdir('images/' . $folder);
         }
         $base64_str = substr($param, strpos($param, ",") + 1);
         $image = base64_decode($base64_str);
-        $png_url = "image.jpg";
-        $path = public_path('images/' . $folder . '/' . $png_url);
+        $path = public_path('images/' . $folder . '/' . $name);
         file_put_contents($path, $image);
-        return $png_url;
+        return $name;
     }
 
     public function deleteFolder($folder)
@@ -56,4 +55,5 @@ class Controller extends BaseController
             rmdir($folder);
         }
     }
+
 }

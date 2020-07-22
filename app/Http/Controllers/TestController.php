@@ -9,6 +9,7 @@ use App\Http\Resources\Questions\QuestionsCollection;
 use App\Model\Question\QuestionGroupModel;
 use App\Model\Question\QuestionModel;
 use App\Traits\ApiResponser;
+use App\Traits\FileUpload;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -16,6 +17,7 @@ class TestController extends Controller
 {
     //
     use ApiResponser;
+    use FileUpload;
 
     public $label =['A', 'B', 'C', 'D'];
     public function test(){
@@ -24,12 +26,12 @@ class TestController extends Controller
         //return response()->json(new QuestionsCollection($list));
      /*   $group = QuestionGroupModel::paginate(10);
         return $this->successResponseMessage(new GroupQuestionsCollection($group), 200, 'get success');*/
-     /*return Excel::download(new SimpleQuestionsExport(), 'simpleQuestion.xlsx');*/
-        $html = file_get_html('https://www.youtube.com/watch?v=2cblKNffVPg');
+     return Excel::download(new SimpleQuestionsExport(1), 'simpleQuestion.xlsx');
+        /*$html = file_get_html('https://www.youtube.com/watch?v=2cblKNffVPg');
 
         $meta = $html->find('meta[property=og:title]', 0);
 
-        dd($meta->content);
+        dd($meta->content); */
        /* $url = "https://www.youtube.com/watch?v=2cblKNffVPg";
         $headers = file_get_contents($url);
 
@@ -45,8 +47,31 @@ class TestController extends Controller
         die();*/
         //echo $meta->content;
 
-        /*$group = QuestionGroupModel::paginate(10);
+        $question = QuestionModel::whereNull('group_id')->get();
+        $array = [];
+        foreach ($question as $key =>$value){
+            $array[$key]['question']= $value->question;
+            foreach ($value->answers as $answerKey => $answer){
+                $array[$key][$this->label[$answerKey]]= $answer->answer;
+                if($answer->status){
+                    $array[$key]['right']= $this->label[$answerKey];
+                }
+                $array[$key]['explain']= $answer->explain;
+            }
+        }
 
-        return view('Excel.GroupQuestions', compact('group'));*/
+        return view('Excel.SimpleQuestion', compact('array'));
+    }
+
+    public function upload(Request $request)
+    {
+        if ($request->hasFile('file')) {
+            $file = $request->file;
+
+            $abc = $this->uploadFile('upload', $file);
+            return response()->json(['ok' => $abc]);
+        }
+        return response()->json(['ok' => 'ok1']);
+        return response()->json($request->all());
     }
 }

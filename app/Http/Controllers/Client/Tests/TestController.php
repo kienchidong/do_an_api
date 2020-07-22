@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Client\Tests;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Questions\GroupQuestionsCollection;
+use App\Http\Resources\Questions\GroupQuestionsResource;
 use App\Http\Resources\Test\TestListCollection;
 use App\Http\Resources\Test\TestResource;
+use App\Model\Question\QuestionGroupModel;
 use App\Model\Test\TestModel;
 use App\Traits\ApiResponser;
 use Illuminate\Http\Request;
@@ -32,5 +35,22 @@ class TestController extends Controller
         $tests = TestModel::find($request->test_id);
         return $this->successResponseMessage(new TestResource($tests), 200, 'get success');
 
+    }
+
+    public function getListReading(Request $request)
+    {
+        $type= $request->get('type', 0);
+        $read = QuestionGroupModel::whereType($type)->paginate(10);
+
+        return $this->successResponseMessage(new GroupQuestionsCollection($read), 200,"success");
+    }
+
+    public function getDetailReading(Request $request)
+    {
+        $request->validate([
+            'group_id' => 'bail|required|exists:group_questions,id'
+        ]);
+        $tests = QuestionGroupModel::find($request->group_id);
+        return $this->successResponseMessage(new GroupQuestionsResource($tests), 200, 'get success');
     }
 }

@@ -7,6 +7,7 @@
         <th>C</th>
         <th>D</th>
         <th>Right Answer</th>
+        <th>Explain</th>
     </tr>
     </thead>
     <tbody>
@@ -18,6 +19,7 @@
             <td>{{ isset($value['C']) ? ($value['C']) : '' }}</td>
             <td>{{ isset($value['D']) ? ($value['D']) : '' }}</td>
             <td>{{ $value['right'] }}</td>
+            <td>{{ $value['explain'] }}</td>
         </tr>
     @endforeach
     </tbody>

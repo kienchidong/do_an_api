@@ -94,7 +94,12 @@
                         </li>
                     </ul>
                 </li>
-                <li><router-link to="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></router-link></li>
+                <li>
+                    <router-link to="/list-feedback.html"><i class="fa fa-comments-o text-yellow" aria-hidden="true"></i> <span>Feedback</span></router-link>
+                </li>
+                <li>
+                    <router-link to="/list-result.html"><i class="fa fa-check-square-o" aria-hidden="true"></i> <span>{{ $t('router-name.Result') }}</span></router-link>
+                </li>
                 <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
             </ul>
         </section>

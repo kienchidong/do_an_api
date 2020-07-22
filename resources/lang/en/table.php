@@ -16,5 +16,9 @@ return [
     'video' => [
         'link' => 'link',
         'type' => 'type',
+    ],
+    'feedback' => [
+        'content' => 'Content',
+        'user' => 'User Create',
     ]
 ];

@@ -15,5 +15,7 @@ return [
         'editGroup' => 'Edit Group Questions',
     ],
     'typeVideo' => 'Type of Video',
-    'Video' => 'Video'
+    'Video' => 'Video',
+    'Feedback' => 'Feedback',
+    'Result' => 'Result'
 ];

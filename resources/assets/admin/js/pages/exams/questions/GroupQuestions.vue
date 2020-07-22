@@ -4,37 +4,51 @@
             <b-progress-bar variant="primary" :value="step" :label="label"></b-progress-bar>
         </b-progress>
         <hr>
-        <b-form-group
-            label="Tên:"
-            label-for="input-1"
-            description=""
-            v-if="step === 1"
-        >
-            <b-form-input v-model="formData.name"></b-form-input>
-        </b-form-group>
-        <b-form-group
-            label="Level:"
-            label-for="input-1"
-            description=""
-            v-if="step === 1"
-        >
-            <b-form-select v-model="formData.level" size="sm" class="mt-3">
-                <b-form-select-option v-for="(item, index) in level" :key="index" :value="item.id">{{ item.name }}
-                </b-form-select-option>
-            </b-form-select>
-        </b-form-group>
-        <b-form-group
-            label="Mô tả:"
-            label-for="input-1"
-            description=""
-            v-if="step === 1"
-        >
-            <tinymce id="d1" v-model="formData.describe"></tinymce>
-        </b-form-group>
-        <b-col sm="12" md="12" v-if="step === 1" class="text-center">
-            <hr>
-            <b-button v-on:click="createGroup">Submit</b-button>
-        </b-col>
+        <section v-if="step === 1">
+            <b-form-group
+                label="Tên:"
+                description=""
+            >
+                <b-form-input v-model="name"></b-form-input>
+            </b-form-group>
+            <b-form-group
+                label="Level:"
+                description=""
+            >
+                <b-form-select v-model="levelChoose" size="sm" class="mt-3">
+                    <b-form-select-option v-for="(item, index) in level" :key="index" :value="item.id">{{ item.name }}
+                    </b-form-select-option>
+                </b-form-select>
+            </b-form-group>
+            <b-form-group
+                label="Mô tả:"
+                description=""
+            >
+                <tinymce id="d1" v-model="describe"></tinymce>
+            </b-form-group>
+            <b-form-group
+                label="Loại câu hỏi:"
+                description=""
+            >
+                <b-form-select v-model="type" class="mb-3">
+                    <b-form-select-option value="0">Đọc</b-form-select-option>
+                    <b-form-select-option value="1">Nghe</b-form-select-option>
+                </b-form-select>
+            </b-form-group>
+            <b-form-group
+                label="file:"
+                description=""
+                v-if="type == 1"
+            >
+                <b-form-file v-model="audio" class="mt-3" plain></b-form-file>
+            </b-form-group>
+
+            <b-col sm="12" md="12" class="text-center">
+                <hr>
+                <b-button v-on:click="createGroup">Submit</b-button>
+            </b-col>
+        </section>
+
         <simple-question v-if="step>1"
                          :group_id="group_id"
                          :group_step="step"
@@ -59,12 +73,12 @@
                 numberQuestion: 1,
                 level: [],
                 step: 1,
-                formData: {
-                    name: null,
-                    describe: null,
-                    level: null,
-                },
+                name: null,
+                describe: null,
+                levelChoose: null,
                 group_id: null,
+                type: null,
+                audio: null,
             }
         },
         created() {
@@ -74,6 +88,15 @@
             label: function () {
                 let la = (this.step / this.numberQuestion) * 100;
                 return la + '%';
+            },
+            formData: function () {
+                let form = new FormData();
+                form.append('name', this.name);
+                form.append('describe', this.describe);
+                form.append('level', this.levelChoose);
+                form.append('type', this.type);
+                form.append('file', this.audio);
+                return form;
             }
         },
         methods: {
@@ -86,9 +109,16 @@
                 alert('abc')
             },
             createGroup() {
-                axios.post('question/createGroupQuestions', this.formData).then(response => {
-                    /!*console.log(response);*!/
-                    let {data} = response.data;
+
+                axios.post('/question/createGroupQuestions', this.formData,
+                    {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                        }
+                    }
+                ).then(response => {
+                   console.log(response);
+                 /*   let {data} = response.data;
                     this.group_id = data.id;
                     this.$swal({
                         title: 'Bao nhiêu câu?',
@@ -100,7 +130,7 @@
                             this.numberQuestion = result.value;
                         }
                     });
-                    this.step = this.step + 1;
+                    this.step = this.step + 1;*/
                 }).catch(err => {
                     const {data} = err.response;
                     if (typeof data.errors === 'object') {

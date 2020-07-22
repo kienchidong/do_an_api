@@ -9,7 +9,7 @@ class QuestionModel extends Model
     //
 
     protected $table = 'questions';
-    protected $fillable = ['group_id', 'question', 'level', 'answer', 'status', 'explain'];
+    protected $fillable = ['group_id', 'question', 'level', 'answer', 'status', 'explain', 'image'];
     public $timestamps = false;
 
     public static function CreateQuestion($data)
@@ -42,9 +42,13 @@ class QuestionModel extends Model
 
     public function updateQuestion($data)
     {
+        if ($data['image'] != null && $this->image != null && file_exists('images/questions/simple/'.$this->image)) {
+            unlink('images/questions/simple/'.$this->image);
+        }
         $this->update([
             'question' => $data['question'],
             'explain' => $data['explain'],
+            'image' => $data['image'],
         ]);
         foreach ($this->answers()->pluck('id') as $key => $id) {
             AnswerModel::find($id)->update([
