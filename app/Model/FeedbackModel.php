@@ -9,7 +9,7 @@ class FeedbackModel extends Model
 {
     //
     protected $table = 'feed_backs';
-    protected $fillable = ['user_id', 'content'];
+    protected $fillable = ['user_id', 'content', 'name'];
 
     public function user()
     {

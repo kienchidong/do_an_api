@@ -45,11 +45,12 @@ $router->middleware('jwt.auth')->group(function () use ($router){
 
     });
 
+    /** feedback */
     $router->prefix('feedback')->group(function () use ($router){
-       $router->post('store', 'Feedback\FeedbackController@store');
+        $router->post('store', 'Feedback\FeedbackController@store');
 
-       $router->post('getList', 'Feedback\FeedbackController@getList');
     });
+
 });
 
 

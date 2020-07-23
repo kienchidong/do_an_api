@@ -16,7 +16,8 @@
         "martinlindhe/laravel-vue-i18n-generator": "^0.1.46",
         "spatie/laravel-cors": "^1.6",
         "spatie/laravel-permission": "^3.11",
-        "tymon/jwt-auth": "dev-develop"
+        "tymon/jwt-auth": "dev-develop",
+        "doctrine/dbal": "v2.4.2"
     },
     "require-dev": {
         "filp/whoops": "^2.0",
