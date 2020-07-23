@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\FeedBack\FeedbackCollection;
 use App\Http\Resources\News\NewsCollection;
 use App\Http\Resources\User\UserCollection;
+use App\Model\FeedbackModel;
 use App\Model\News\NewsModel;
 use App\Traits\ApiResponser;
 use App\User;
@@ -35,6 +37,7 @@ class HomeController extends Controller
 
     public function getFeedback()
     {
-        
+        $fb = FeedbackModel::orderByDESC('created_at')->paginate(4);
+        return $this->successResponseMessage(new FeedbackCollection($fb), 200, 'get success');
     }
 }

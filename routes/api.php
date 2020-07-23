@@ -40,9 +40,6 @@ $router->middleware('jwt.auth')->group(function () use ($router){
 
     $router->prefix('result')->group(function () use ($router){
        $router->post('store', 'Result\ResultController@store');
-
-       $router->post('getListByUser', 'Result\ResultController@getListByUser');
-
     });
 
     /** feedback */
@@ -106,6 +103,9 @@ $router->middleware('loginOrNot')->group(function () use ($router){
         $router->post('getList', 'Client\HomeController@getFeedback');
     });
 
+    $router->prefix('result')->group(function () use ($router){
+        $router->post('getListByUser', 'Result\ResultController@getListByUser');
+    });
 
 });
 

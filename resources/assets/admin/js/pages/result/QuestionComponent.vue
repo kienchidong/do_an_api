@@ -22,7 +22,7 @@
                         >
                             {{ item.chooseAnswer}}
                             <span v-if="questionDetail.image">({{ label[index]}})</span>
-                            <span v-if="!questionDetail.image">{{ item.answer }}</span>
+                            <span >{{ item.answer }}</span>
                         </b-form-radio>
                         <div v-if="chooseAnswer == index && explain">
                             <i class="fa fa-check text-success" v-if="checkAnswer == true"></i>

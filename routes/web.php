@@ -128,6 +128,10 @@ $router->group(['middleware' => 'locale'], function () use ($router) {
             $router->prefix('result')->group(function () use ($router) {
                 $router->post('getList', 'Result\ResultController@getList');
             });
+
+            $router->prefix('feedback')->group(function () use ($router) {
+                $router->post('getList', 'Feedback\FeedbackController@getList');
+            });
             /**
              * route VueJs phải ở dưới cùng
              * */

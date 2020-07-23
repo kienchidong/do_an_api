@@ -15,9 +15,10 @@ class ResultResource extends JsonResource
      */
     public function toArray($request)
     {
-        $code = ($this->is_simple = 1) ? 'S': 'G';
+        $code = ($this->is_simple == 1) ? 'S': 'G';
         return [
             'id' => $this->id,
+            'test_id' => $this->test_id,
             'user' => new UserDetailResource($this->user),
             'code' => $code,
             'point' => $this->point,

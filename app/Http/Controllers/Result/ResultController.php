@@ -51,33 +51,10 @@ class ResultController extends Controller
     }
 
     public function getListByUser(Request $request)
-    {/*
-        $size = $request->get('size', 10);
-        $result = Auth::user()->result()
-        ->when($request->has('simple'), function ($query){
-            $query->whereIsSimple(1);
-        })
-        ->when($request->has('group'), function ($query){
-            $query->whereIsGroup(1);
-        })->paginate($size);
+    {$size = $request->get('size', 10);
 
-        return response()->json($result);*/
+        $result = ResultModel::whereUserId($request->id)->orderByDESC('created_at')->paginate($size);
 
-        /*$question = QuestionModel::find(1);
-        $chose_id = 1;
-        $data['question'] = $question->question;
-
-        $answers = $question->answers;
-        foreach($answers as $key => $answer){
-            if($answer->id == $chose_id){
-                $answers[$key]['chosen'] = 1;
-                $data['status'] = $answer->status;
-            }else{
-                $answers[$key]['chosen'] = 0;
-            }
-        }
-        $data['answers'] = $answers;
-
-        return response()->json($data);*/
+        return $this->successResponseMessage(new ResultCollection($result), 200, 'success');
     }
 }
