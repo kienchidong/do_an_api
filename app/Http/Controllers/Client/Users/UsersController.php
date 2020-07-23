@@ -24,4 +24,16 @@ class UsersController extends Controller
         $user = User::Create($input);
         return $this->successResponseMessage(new UserDetailResource($user), 200, 'create success');
     }
+
+    public function getProfile(Request $request)
+    {
+
+        $request->validate([
+            'id' => 'bail|required|exists:users,id',
+        ]);
+        $user = User::find($request->id);
+
+        return $this->successResponseMessage(new UserDetailResource($user), 200, 'create success');
+
+    }
 }

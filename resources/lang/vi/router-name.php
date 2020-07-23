@@ -13,8 +13,10 @@ return [
         'listSimple' => 'Câu Hỏi Đơn',
         'listGroup' => 'Nhóm câu hỏi',
         'editGroup' => 'Sửa Nhóm câu hỏi',
+        'listen' => 'Câu hỏi Nghe'
     ],
     'typeVideo' => 'Loại Video',
     'Video' => 'Video',
-    'Feedback' => 'Phản Hồi'
+    'Feedback' => 'Phản Hồi',
+    'Result' => 'Kết Quả HỌc Viên'
 ];

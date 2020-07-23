@@ -13,8 +13,10 @@ return [
         'listSimple' => 'Simple Questions',
         'listGroup' => 'Group Questions',
         'editGroup' => 'Edit Group Questions',
+        'listen' => 'Listening Question'
     ],
     'typeVideo' => 'Type of Video',
     'Video' => 'Video',
-    'Feedback' => 'Feedback'
+    'Feedback' => 'Feedback',
+    'Result' => 'Result'
 ];

@@ -139,11 +139,13 @@ export default {
             "questions": {
                 "listSimple": "Simple Questions",
                 "listGroup": "Group Questions",
-                "editGroup": "Edit Group Questions"
+                "editGroup": "Edit Group Questions",
+                "listen": "Listening Question"
             },
             "typeVideo": "Type of Video",
             "Video": "Video",
-            "Feedback": "Feedback"
+            "Feedback": "Feedback",
+            "Result": "Result"
         },
         "sidebar": {
             "chose-lang": "Language",
@@ -452,11 +454,13 @@ export default {
             "questions": {
                 "listSimple": "Câu Hỏi Đơn",
                 "listGroup": "Nhóm câu hỏi",
-                "editGroup": "Sửa Nhóm câu hỏi"
+                "editGroup": "Sửa Nhóm câu hỏi",
+                "listen": "Câu hỏi Nghe"
             },
             "typeVideo": "Loại Video",
             "Video": "Video",
-            "Feedback": "Phản Hồi"
+            "Feedback": "Phản Hồi",
+            "Result": "Kết Quả HỌc Viên"
         },
         "sidebar": {
             "chose-lang": "Ngôn ngữ",

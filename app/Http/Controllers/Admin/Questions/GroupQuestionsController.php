@@ -25,8 +25,8 @@ class GroupQuestionsController extends Controller
         return $this->successResponseMessage($input, '200', 'create success!');
     }
 
-    public function getList(){
-        $group = QuestionGroupModel::paginate(10);
+    public function getList(Request $request){
+        $group = QuestionGroupModel::whereType($request->type)->paginate(10);
 
         return response()->json(new GroupQuestionsCollection($group));
     }

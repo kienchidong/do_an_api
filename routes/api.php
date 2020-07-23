@@ -58,6 +58,7 @@ $router->middleware('jwt.auth')->group(function () use ($router){
 $router->middleware('loginOrNot')->group(function () use ($router){
     $router->prefix('home')->group(function () use ($router) {
        $router->post('getHotNews', 'Client\HomeController@getHotNews');
+       $router->post('getListNewsUser', 'Client\HomeController@getListNewsUser');
     });
 
 
@@ -93,6 +94,16 @@ $router->middleware('loginOrNot')->group(function () use ($router){
 
         $router->post('GetListVideo', 'Video\VideoController@getList');
         $router->post('getDetail', 'Client\Tests\TestController@getDetail');
+    });
+
+    /** User */
+    $router->prefix('users')->group(function () use ($router) {
+        $router->post('profile', 'Client\Users\UsersController@getProfile');
+    });
+
+    /** feedback */
+    $router->prefix('feedback')->group(function () use ($router) {
+        $router->post('getList', 'Client\HomeController@getFeedback');
     });
 
 

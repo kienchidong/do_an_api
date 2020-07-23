@@ -159,9 +159,6 @@
                 },
                 totalPage: 1,
                 currentPage: 1,
-                formLoad: {
-                    page: 0,
-                },
                 modalDetail: {
                     name: null,
                     describe: null,
@@ -180,12 +177,19 @@
                 }
             }
         },
+        computed:{
+            formLoad:function () {
+                return {
+                    page: this.currentPage,
+                    type: 0
+                }
+            },
+        },
         created() {
             this.firstLoad();
         },
         methods: {
             firstLoad() {
-                this.formLoad.page = this.currentPage;
                 axios.post('question/group/getList', this.formLoad).then(response => {
                     let {data} = response;
                     console.log(data)

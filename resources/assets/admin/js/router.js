@@ -21,6 +21,8 @@ import EditGroupComponent from "./pages/exams/questions/EditGroupComponent";
 import TypeVideo from "./pages/video/TypeVideo";
 import ListVideo from "./pages/video/ListVideo";
 import ListFeedBack from "./pages/feedback/ListFeedBack";
+import ListResult from "./pages/result/ListResult";
+import ListeningTest from "./pages/exams/Listen/ListeningTest"
 
 export const routes = [
     {
@@ -100,6 +102,13 @@ export const routes = [
                 meta: {permissions: "all"}
 
             },{
+                path: "List-Listening-Question.html",
+                name: "router-name.questions.listen",
+                component: ListeningTest,
+                props: true,
+                meta: {permissions: "all"}
+
+            },{
                 path: "Edit-Group-Question",
                 name: "router-name.questions.editGroup",
                 component: EditGroupComponent,
@@ -143,6 +152,14 @@ export const routes = [
                 path: "list-feedback.html",
                 name: "router-name.Feedback",
                 component: ListFeedBack,
+                props: true,
+                meta: {permissions: "all"}
+
+            },
+            {
+                path: "list-result.html",
+                name: "router-name.Result",
+                component: ListResult,
                 props: true,
                 meta: {permissions: "all"}
 

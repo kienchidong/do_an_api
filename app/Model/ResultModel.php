@@ -21,7 +21,7 @@ class ResultModel extends Model
 
     public function answerHistory()
     {
-        $result = [];
+        $data = [];
         $detail = json_decode($this->answer_detail, true);
 
         foreach ($detail as $key => $value) {
