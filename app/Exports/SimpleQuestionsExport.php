@@ -15,7 +15,7 @@ class SimpleQuestionsExport implements FromView, ShouldAutoSize
     public $label =['A', 'B', 'C', 'D'];
     public $size = 0;
 
-    public function __construct($size = 10){
+    public function __construct($size = 0){
         $this->size = $size;
     }
 

@@ -8,7 +8,8 @@
                         <div class="box-header">
                             <h3 class="box-title">
                                 <router-link class="btn btn-primary" to="Questions-Create">Thêm Mới</router-link>
-                                <a href=""></a>
+                                <b-button variant="success" v-on:click="importModal = !importModal"><i class="fa fa-upload" aria-hidden="true"></i> Import</b-button>
+                                <b-button variant="success" v-on:click="exportModal = !exportModal"><i class="fa fa-download" aria-hidden="true"></i> Export</b-button>
                             </h3>
 
                             <div class="box-tools">
@@ -113,12 +114,25 @@
                 v-on:nextStep="done = true"
             ></simple-question>
         </b-modal>
+
+        <!--modal import-->
+        <import-simple-question
+            v-if="importModal"
+            v-model="importModal"
+            @handle="firstLoad"
+        />
+        <export-simple-question
+            v-if="exportModal"
+            v-model="exportModal"
+        />
     </div>
 </template>
 
 <script>
     import Paginate from "vuejs-paginate";
     import SimpleQuestion from "./SimpleQuestion";
+    import ImportSimpleQuestion from "./simple/ImportSimpleQuestion";
+    import ExportSimpleQuestion from "./simple/ExportSimpleQuestion";
 
     const table_collumns = [
         'table.#',
@@ -141,7 +155,9 @@
         name: "ListSimpleQuestions",
         components: {
             Paginate,
-            SimpleQuestion
+            SimpleQuestion,
+            ImportSimpleQuestion,
+            ExportSimpleQuestion
         },
         data() {
             return {
@@ -165,6 +181,8 @@
                     explain: null,
                 },
                 editForm: [],
+                importModal: false,
+                exportModal: false,
             }
         },
         watch: {
@@ -181,6 +199,7 @@
         },
         methods: {
             firstLoad() {
+                this.importModal = false;
                 this.formLoad.page = this.currentPage;
                 axios.post('question/simple/getList', this.formLoad).then(response => {
                     let {data} = response;

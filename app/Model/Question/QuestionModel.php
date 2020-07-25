@@ -9,7 +9,7 @@ class QuestionModel extends Model
     //
 
     protected $table = 'questions';
-    protected $fillable = ['group_id', 'question', 'level', 'answer', 'status', 'explain', 'image'];
+    protected $fillable = ['group_id', 'question', 'level', 'explain', 'image'];
     public $timestamps = false;
 
     public static function CreateQuestion($data)

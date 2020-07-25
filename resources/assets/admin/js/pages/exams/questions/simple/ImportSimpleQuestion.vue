@@ -1,8 +1,11 @@
 <template>
     <div class="root">
-        <upload-excel-component v-on:uploadFile="formData.file = $event"></upload-excel-component>
+        <b-modal title="Upload Simple Question" hide-footer v-model="isShow">
+            <upload-excel-component v-on:uploadFile="file = $event"></upload-excel-component>
 
-        <b-button v-on:click="Submit">upload</b-button>
+            <b-button v-on:click="Submit">upload</b-button>
+        </b-modal>
+
     </div>
 </template>
 
@@ -10,24 +13,41 @@
     import UploadExcelComponent from "../../../../components/UploadExcelComponent";
 
     const config = {
-        headers: { 'content-type': 'multipart/form-data' }
+        headers: {'content-type': 'multipart/form-data'}
     };
     export default {
         name: "ImportSimpleQuestion",
         components: {
             UploadExcelComponent
         },
+        props: ['value'],
         data() {
             return {
-                formData: {
-                    file: 'image',
+                file: null,
+                isShow: false,
+            }
+        },
+        mounted() {
+            this.isShow = this.value;
+        },
+        watch: {
+            isShow: function (val) {
+                if (val == false) {
+                    this.$emit('input', val)
                 }
             }
-        }, methods: {
-            Submit() {
+        },
+        computed: {
+            formData: function () {
                 let form = new FormData();
+                form.append('file', this.file);
+                return form;
+            }
+        },
+        methods: {
+            Submit() {
                 axios.post('question/simple/import', this.formData, config).then(response => {
-                    console.log(response)
+                    this.$emit('handle');
                 }).catch(err => {
                     const {data} = err.response;
                     if (typeof data.errors === 'object') {

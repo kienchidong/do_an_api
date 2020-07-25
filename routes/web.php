@@ -16,7 +16,7 @@
  });*/
 
 
-$router->get('test', 'Result\ResultController@getList');
+$router->get('test', 'Admin\Questions\QuestionsController@export');
 $router->get('deleteCate/{id}', 'Admin\CateNewsController@destroy');
 $router->prefix('tests')->group(function () use ($router){
     $router->get('getList', 'Admin\Test\TestController@getList');
@@ -99,6 +99,7 @@ $router->group(['middleware' => 'locale'], function () use ($router) {
                     $router->delete('delete/{id}', 'Admin\Questions\QuestionsController@destroy');
 
                     $router->post('import', 'Admin\Questions\QuestionsController@import');
+                    $router->get('export', 'Admin\Questions\QuestionsController@export');
                 });
 
                 $router->prefix('group')->group(function () use ($router) {
@@ -128,6 +129,13 @@ $router->group(['middleware' => 'locale'], function () use ($router) {
             $router->prefix('result')->group(function () use ($router) {
                 $router->post('getList', 'Result\ResultController@getList');
             });
+
+            /** feedback */
+            $router->prefix('feedback')->group(function () use ($router){
+                $router->post('getList', 'Feedback\FeedbackController@getList');
+
+            });
+
             /**
              * route VueJs phải ở dưới cùng
              * */

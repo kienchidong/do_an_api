@@ -6,6 +6,7 @@ use App\AdminModel;
 use App\Exports\SimpleQuestionsExport;
 use App\Http\Resources\Questions\GroupQuestionsCollection;
 use App\Http\Resources\Questions\QuestionsCollection;
+use App\Imports\SimpleQuestions\SimpleQuestionsImport;
 use App\Model\Question\QuestionGroupModel;
 use App\Model\Question\QuestionModel;
 use App\Traits\ApiResponser;
@@ -73,5 +74,17 @@ class TestController extends Controller
         }
         return response()->json(['ok' => 'ok1']);
         return response()->json($request->all());
+    }
+
+    public function test2(Request $request)
+    {
+        /*$size = $request->get('size', 10);
+        $type = $request->get('type', 'xlsx');
+        $fileName = 'simpleQuestion.'.$type;
+        return Excel::download(new SimpleQuestionsExport($size), $fileName);*/
+
+        Excel::import(new SimpleQuestionsImport(), $request->file);
+        echo 'ok';
+
     }
 }
