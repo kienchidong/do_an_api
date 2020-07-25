@@ -80,17 +80,16 @@
                             <b-container class="bv-example-row">
                                 <b>{{ modalDetail.name }}</b>
                                 <hr>
-                                <audio controls v-if="modalDetail.audio != 0">
-                                    <source src=" http://127.0.0.1:8000/upload/audio-1594734507-con-nguoi.mp3" type="audio/mpeg">
-                                    Your browser does not support the audio element.
-                                </audio>
-
                                 <b-row>
                                     <b-col sm="12" md="12">
                                         <b-form inline>
                                             <p v-html="modalDetail.describe"></p>
                                         </b-form>
                                     </b-col>
+                                    <audio controls v-if="modalDetail.audio">
+                                        <source :src="modalDetail.audio" type="audio/mpeg">
+                                        Your browser does not support the audio element.
+                                    </audio>
                                     <hr>
                                     <b-col v-for="(question, indexQuestions) in modalDetail.questions"
                                            :key="indexQuestions" sm="12"

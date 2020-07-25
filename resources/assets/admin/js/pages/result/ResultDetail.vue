@@ -1,7 +1,15 @@
 <template>
     <div class="root">
         <b-modal v-model="isShow" size="lg">
-            <div v-for="(item, index) in answers" :key="index">
+            <section>
+                <h4 v-if="answers.name">{{ answers.name }}</h4>
+                <p v-if="answers.describe" v-html="answers.describe"></p>
+                <audio controls v-if="answers.audio">
+                    <source :src="answers.audio" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </section>
+            <div v-for="(item, index) in answers.detail" :key="index">
                 <question-component
                     :question-detail="item"
                     :number-question="index+1"

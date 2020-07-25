@@ -18,9 +18,9 @@
                 <li>
                 <router-link to="/"><i class="fa fa-home" aria-hidden="true"></i> <span>{{ $t('router-name.home') }}</span></router-link>
                 </li>
-                <li>
+                <!--<li>
                     <router-link to="/testVue"><i class="fa fa-text-width" aria-hidden="true"></i> <span>test</span></router-link>
-                </li>
+                </li>-->
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-file-text" aria-hidden="true"></i> <span>{{ $t('router-name.newsList') }}</span>
