@@ -65,7 +65,7 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
             if(explode( '/',$request->getPathInfo())[1] == 'api') {
-                //dd($exception);
+                dd($exception);
                 if ($exception instanceof ModelNotFoundException) {
                     $model = strtolower(class_basename($exception->getModel()));
                     return $this->errorResponse("Does not exits any instance of {$model} with the given", 404);

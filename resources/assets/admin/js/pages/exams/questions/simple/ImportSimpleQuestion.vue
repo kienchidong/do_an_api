@@ -20,7 +20,7 @@
         components: {
             UploadExcelComponent
         },
-        props: ['value'],
+        props: ['value', 'link'],
         data() {
             return {
                 file: null,
@@ -46,7 +46,7 @@
         },
         methods: {
             Submit() {
-                axios.post('question/simple/import', this.formData, config).then(response => {
+                axios.post(this.link, this.formData, config).then(response => {
                     this.$emit('handle');
                 }).catch(err => {
                     const {data} = err.response;

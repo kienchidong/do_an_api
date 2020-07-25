@@ -8,6 +8,8 @@
                         <div class="box-header">
                             <h3 class="box-title">
                                 <router-link class="btn btn-primary" to="Questions-Create">Thêm Mới</router-link>
+                                <b-button variant="success" v-on:click="importModal = !importModal"><i class="fa fa-upload" aria-hidden="true"></i> Import</b-button>
+                                <b-button variant="success" v-on:click="exportModal = !exportModal"><i class="fa fa-download" aria-hidden="true"></i> Export</b-button>
                             </h3>
 
                             <div class="box-tools">
@@ -115,12 +117,27 @@
                 </div>
             </div>
         </section>
+        <!--import-->
+        <import-simple-question
+            v-if="importModal"
+            v-model="importModal"
+            @handle="firstLoad"
+            link="question/group/import"
+        />
+        <!--export-->
+        <export-simple-question
+            v-if="exportModal"
+            v-model="exportModal"
+            link="question/group/export"
+        />
     </div>
 </template>
 
 <script>
     import Paginate from "vuejs-paginate";
     import EditGroupComponent from "./EditGroupComponent";
+    import ExportSimpleQuestion from "./simple/ExportSimpleQuestion";
+    import ImportSimpleQuestion from "./simple/ImportSimpleQuestion";
 
     const table_collumns = [
         'table.#',
@@ -143,7 +160,9 @@
         name: "ListSimpleQuestions",
         components: {
             Paginate,
-            EditGroupComponent
+            EditGroupComponent,
+            ExportSimpleQuestion,
+            ImportSimpleQuestion
         },
         data() {
             return {
@@ -165,6 +184,8 @@
                     audio: null,
                 },
                 editForm: [],
+                importModal: false,
+                exportModal: false,
             }
         },
         watch: {

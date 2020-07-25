@@ -24,7 +24,7 @@
                 </b-form-select>
             </b-form-group>
             <template v-slot:modal-footer>
-                <a class="btn btn-outline-info" :href="'question/simple/export?size='+ size +'&type='+type" v-on><i class="fa fa-download"></i> Down Load</a>
+                <a class="btn btn-outline-info" :href="link+'?size='+ size +'&type='+type"><i class="fa fa-download"></i> Down Load</a>
             </template>
         </b-modal>
     </div>
@@ -33,7 +33,7 @@
 <script>
     export default {
         name: "ExportSimpleQuestion",
-        props: ['value'],
+        props: ['value', 'link'],
         data() {
             return {
                 isShow: false,

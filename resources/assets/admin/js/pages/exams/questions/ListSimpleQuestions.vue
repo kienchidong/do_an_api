@@ -120,10 +120,12 @@
             v-if="importModal"
             v-model="importModal"
             @handle="firstLoad"
+            link="question/simple/import"
         />
         <export-simple-question
             v-if="exportModal"
             v-model="exportModal"
+            link="question/simple/export"
         />
     </div>
 </template>

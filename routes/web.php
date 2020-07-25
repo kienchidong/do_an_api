@@ -16,7 +16,7 @@
  });*/
 
 
-$router->get('test', 'Admin\Questions\QuestionsController@export');
+$router->get('test', 'TestController@test2');
 $router->get('deleteCate/{id}', 'Admin\CateNewsController@destroy');
 $router->prefix('tests')->group(function () use ($router){
     $router->get('getList', 'Admin\Test\TestController@getList');
@@ -107,6 +107,9 @@ $router->group(['middleware' => 'locale'], function () use ($router) {
 
                     $router->get('edit/{id}', 'Admin\Questions\GroupQuestionsController@edit');
                     $router->put('edit/{id}', 'Admin\Questions\GroupQuestionsController@update');
+
+                    $router->post('import', 'Admin\Questions\GroupQuestionsController@import');
+                    $router->get('export', 'Admin\Questions\GroupQuestionsController@export');
                 });
             });
 
