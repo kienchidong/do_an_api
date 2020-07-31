@@ -10,13 +10,15 @@ return [
     'newsEdit' => 'Sửa Bài viết',
     'questionsCreate' => 'Tạo mới câu hỏi',
     'questions' => [
+        'title' => 'Câu hỏi',
         'listSimple' => 'Câu Hỏi Đơn',
-        'listGroup' => 'Nhóm câu hỏi',
-        'editGroup' => 'Sửa Nhóm câu hỏi',
+        'listGroup' => 'Câu hỏi Đọc',
+        'editGroup' => 'Sửa Câu hỏi đọc',
         'listen' => 'Câu hỏi Nghe'
     ],
     'typeVideo' => 'Loại Video',
     'Video' => 'Video',
     'Feedback' => 'Phản Hồi',
-    'Result' => 'Kết Quả HỌc Viên'
+    'Result' => 'Kết Quả HỌc Viên',
+    'Exams' => 'Đề Thi'
 ];

@@ -8,10 +8,13 @@ use App\Exports\SimpleQuestionsExport;
 use App\Http\Resources\Excel\GroupQuestions\ExcelGroupQuestionCollection;
 use App\Http\Resources\Questions\GroupQuestionsCollection;
 use App\Http\Resources\Questions\QuestionsCollection;
+use App\Http\Resources\Result\ResultCollection;
+use App\Http\Resources\Result\ResultResource;
 use App\Imports\GroupQuestions\GroupQuestionsImport;
 use App\Imports\SimpleQuestions\SimpleQuestionsImport;
 use App\Model\Question\QuestionGroupModel;
 use App\Model\Question\QuestionModel;
+use App\Model\ResultModel;
 use App\Traits\ApiResponser;
 use App\Traits\FileUpload;
 use Illuminate\Http\Request;
@@ -84,9 +87,12 @@ class TestController extends Controller
     public function test2(Request $request)
     {
         //return Excel::download(new GroupQuestionExport(), 'group.xlsx');
-        Excel::import(new GroupQuestionsImport(), $request->file);
 
-        return response()->json(['ok' => 'ok']);
+       /* Excel::import(new GroupQuestionsImport(), $request->file);
 
+        return response()->json(['ok' => 'ok']);*/
+
+        $result = ResultModel::paginate(1)->sortBy('percent');
+        return response()->json($result);
     }
 }

@@ -20,5 +20,11 @@ return [
     'feedback' => [
         'content' => 'Nội Dung',
         'user' => 'Người Tạo',
+    ],
+    'exams' => [
+        'Level' => 'Trình độ',
+        'number_question' => 'Số câu hỏi',
+        'status' => 'Trạng Thái',
+        'time' => 'Thời gian'
     ]
 ];

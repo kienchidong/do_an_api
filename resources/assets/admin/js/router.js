@@ -23,6 +23,7 @@ import ListVideo from "./pages/video/ListVideo";
 import ListFeedBack from "./pages/feedback/ListFeedBack";
 import ListResult from "./pages/result/ListResult";
 import ListeningTest from "./pages/exams/Listen/ListeningTest"
+import ListExams from "./pages/exams/ListExams";
 
 export const routes = [
     {
@@ -160,6 +161,14 @@ export const routes = [
                 path: "list-result.html",
                 name: "router-name.Result",
                 component: ListResult,
+                props: true,
+                meta: {permissions: "all"}
+
+            },
+            {
+                path: "List-Exams.html",
+                name: "router-name.Exams",
+                component: ListExams,
                 props: true,
                 meta: {permissions: "all"}
 

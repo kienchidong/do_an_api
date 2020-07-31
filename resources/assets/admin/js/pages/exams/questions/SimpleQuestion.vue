@@ -223,7 +223,6 @@
                 this.formData.answers = this.answer;
                 this.formData.group_id = this.group_id;
                 axios.post(type, this.formData).then(response => {
-                    console.log(response)
                     alertify.success(message);
                     this.$emit('nextStep', this.group_step + 1);
                 }).catch(err => {

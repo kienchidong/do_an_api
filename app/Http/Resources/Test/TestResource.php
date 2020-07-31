@@ -17,7 +17,7 @@ class TestResource extends JsonResource
     {
         return [
             'test_id' => $this->id,
-            'level' => $this->level,
+            'level' => $this->test_level->name,
             'status' => $this->status,
             'number_question' => sizeof(json_decode($this->list_question)),
             'list_question' => $this->Questions(),

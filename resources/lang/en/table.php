@@ -20,5 +20,11 @@ return [
     'feedback' => [
         'content' => 'Content',
         'user' => 'User Create',
+    ],
+    'exams' => [
+        'Level' => 'Level',
+        'number_question' => 'Number Question',
+        'status' => 'Status',
+        'time' => 'Time'
     ]
 ];

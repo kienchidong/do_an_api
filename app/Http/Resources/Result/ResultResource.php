@@ -21,8 +21,9 @@ class ResultResource extends JsonResource
             'test_id' => $this->test_id,
             'user' => new UserDetailResource($this->user),
             'code' => $code,
-            'point' => $this->point,
             'time' => $this->time,
+            'point' => $this->point_number,
+            'percent' => $this->percent,
             'answer_detail' => $this->answerHistory()
         ];
     }

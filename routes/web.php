@@ -111,6 +111,7 @@ $router->group(['middleware' => 'locale'], function () use ($router) {
                     $router->post('import', 'Admin\Questions\GroupQuestionsController@import');
                     $router->get('export', 'Admin\Questions\GroupQuestionsController@export');
                 });
+
             });
 
             /** type of video */
@@ -139,6 +140,12 @@ $router->group(['middleware' => 'locale'], function () use ($router) {
 
             });
 
+            /** đề kiểm tra */
+            $router->prefix('exams')->group(function () use ($router) {
+                $router->post('index', 'Admin\Test\TestController@index');
+
+                $router->post('store', 'Admin\Test\TestController@store');
+            });
             /**
              * route VueJs phải ở dưới cùng
              * */

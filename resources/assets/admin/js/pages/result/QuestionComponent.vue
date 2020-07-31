@@ -24,15 +24,15 @@
                             <span v-if="questionDetail.image">({{ label[index]}})</span>
                             <span >{{ item.answer }}</span>
                         </b-form-radio>
-                        <div v-if="chooseAnswer == index && explain">
-                            <i class="fa fa-check text-success" v-if="checkAnswer == true"></i>
-                            <i class="fa fa-times text-danger" v-if="checkAnswer == false"></i>
+                        <div v-if="chooseAnswer == index && explain || item.status == 1">
+                            <i class="fa fa-check text-success" v-if="checkAnswer == true || item.status == 1"></i>
+                            <i class="fa fa-times text-danger" v-if="checkAnswer == false && item.status != 1"></i>
                         </div>
                     </b-form>
                 </b-col>
                 <b-col sm="12" md="12" v-if="explain">
                     <b-alert :variant="status" show>
-                        <span>Giải thích:</span>&ensp
+                        <span>Giải thích:</span> &nbsp;
                         <label>{{ questionDetail.explain }}</label>
                     </b-alert>
                 </b-col>
@@ -83,7 +83,7 @@
                     this.chooseAnswer = index;
                 }
             })
-            this.status = (this.questionDetail.status == 1) ? 'success': 'danger';
+            this.status = (this.questionDetail.status == 1 || this.chooseAnswer == null) ? 'success': 'danger';
         }
     }
 </script>
