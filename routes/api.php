@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-$router->post('test', 'Result\ResultController@getList');
+$router->post('test', 'Client\Tests\TestController@answerWriting');
 $router->middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -49,6 +49,9 @@ $router->middleware('jwt.auth')->group(function () use ($router){
 
     });
 
+    $router->prefix('tests')->group(function () use ($router) {
+        $router->post('answerWriting', 'Client\Tests\TestController@answerWriting');
+    });
 });
 
 
@@ -77,7 +80,6 @@ $router->middleware('loginOrNot')->group(function () use ($router){
 
         $router->post('getListReading', 'Client\Tests\TestController@getListReading');
         $router->post('getListListening', 'Client\Tests\TestController@getListListening');
-
 
         $router->post('getDetailReading', 'Client\Tests\TestController@getDetailReading');
 

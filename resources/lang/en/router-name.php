@@ -14,11 +14,12 @@ return [
         'listSimple' => 'Simple Questions',
         'listGroup' => 'Reading Questions',
         'editGroup' => 'Edit Reading Questions',
-        'listen' => 'Listening Question'
+        'listen' => 'Listening Question',
+        'Writing' => 'List Writing Questions'
     ],
     'typeVideo' => 'Type of Video',
     'Video' => 'Video',
     'Feedback' => 'Feedback',
     'Result' => 'Result',
-    'Exams' => 'List Exams'
+    'Exams' => 'List Exams',
 ];

@@ -112,6 +112,10 @@ $router->group(['middleware' => 'locale'], function () use ($router) {
                     $router->get('export', 'Admin\Questions\GroupQuestionsController@export');
                 });
 
+                $router->prefix('write')->group(function () use ($router) {
+                    $router->post('getList', 'Admin\Questions\GroupQuestionsController@getList');
+                });
+
             });
 
             /** type of video */

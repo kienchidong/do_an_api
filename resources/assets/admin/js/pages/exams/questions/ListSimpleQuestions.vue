@@ -12,14 +12,6 @@
                                 <b-button variant="success" v-on:click="exportModal = !exportModal"><i class="fa fa-download" aria-hidden="true"></i> Export</b-button>
                             </h3>
 
-                            <div class="box-tools">
-                                <b-form inline>
-                                    <b-input
-                                        id="inline-form-input-name"
-                                        placeholder="Search"
-                                    ></b-input>
-                                </b-form>
-                            </div>
                             <hr>
                         </div>
                         <div class="box-body">

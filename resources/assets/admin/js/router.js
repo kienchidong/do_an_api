@@ -24,6 +24,7 @@ import ListFeedBack from "./pages/feedback/ListFeedBack";
 import ListResult from "./pages/result/ListResult";
 import ListeningTest from "./pages/exams/Listen/ListeningTest"
 import ListExams from "./pages/exams/ListExams";
+import ListWriting from "./pages/exams/Write/ListWriting";
 
 export const routes = [
     {
@@ -169,6 +170,14 @@ export const routes = [
                 path: "List-Exams.html",
                 name: "router-name.Exams",
                 component: ListExams,
+                props: true,
+                meta: {permissions: "all"}
+
+            },
+            {
+                path: "List-Writing.html",
+                name: "router-name.questions.Writing",
+                component: ListWriting,
                 props: true,
                 meta: {permissions: "all"}
 

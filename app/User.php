@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Model\News\NewsModel;
 use App\Model\ResultModel;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -59,5 +60,10 @@ class User extends Authenticatable implements JWTSubject
     public function result()
     {
         return $this->hasMany(ResultModel::class, 'user_id', 'id');
+    }
+
+    public function news()
+    {
+        return $this->hasMany(NewsModel::class, 'author_id', 'id');
     }
 }

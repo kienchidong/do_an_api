@@ -14,7 +14,8 @@ return [
         'listSimple' => 'Câu Hỏi Đơn',
         'listGroup' => 'Câu hỏi Đọc',
         'editGroup' => 'Sửa Câu hỏi đọc',
-        'listen' => 'Câu hỏi Nghe'
+        'listen' => 'Câu hỏi Nghe',
+        'Writing' => 'Câu hỏi Viết'
     ],
     'typeVideo' => 'Loại Video',
     'Video' => 'Video',

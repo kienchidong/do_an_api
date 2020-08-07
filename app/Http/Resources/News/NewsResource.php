@@ -18,12 +18,13 @@ class NewsResource extends JsonResource
         $default_folder = asset('images/news') . '/';
         $image = $default_folder . $this->folder . '/' . $this->image;
 
+        $write = asset('images/toeic.jpg');
         return [
             'id' => $this->id,
             'title' => $this->title,
             'slug' => $this->slug,
             'summary' => $this->summary,
-            'image' => $image,
+            'image' => ($this->question_id) ? $write : $image,
             'cate' => $this->cate->name,
             'number_comment' => $this->comments()->count(),
             'number_like' => $this->likes()->count(),

@@ -12,14 +12,6 @@
                                 <b-button variant="success" v-on:click="exportModal = !exportModal"><i class="fa fa-download" aria-hidden="true"></i> Export</b-button>
                             </h3>
 
-                            <div class="box-tools">
-                                <b-form inline>
-                                    <b-input
-                                        id="inline-form-input-name"
-                                        placeholder="Search"
-                                    ></b-input>
-                                </b-form>
-                            </div>
                             <hr>
                         </div>
                         <div class="box-body">
@@ -103,7 +95,7 @@
                                                    md="6">
                                                 <b-form inline>
                                                     <label class="mr-sm-2">
-                                                        {{ questionLabel[index] }}: {{ item.answer }}
+                                                        <b>{{ questionLabel[index] }}:</b> &nbsp; {{ item.answer }}
                                                     </label><i v-if="item.status"
                                                                class="fa fa-check text-green"></i>
                                                 </b-form>

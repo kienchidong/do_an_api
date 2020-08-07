@@ -141,7 +141,8 @@ export default {
                 "listSimple": "Simple Questions",
                 "listGroup": "Reading Questions",
                 "editGroup": "Edit Reading Questions",
-                "listen": "Listening Question"
+                "listen": "Listening Question",
+                "Writing": "List Writing Questions"
             },
             "typeVideo": "Type of Video",
             "Video": "Video",
@@ -466,7 +467,8 @@ export default {
                 "listSimple": "Câu Hỏi Đơn",
                 "listGroup": "Câu hỏi Đọc",
                 "editGroup": "Sửa Câu hỏi đọc",
-                "listen": "Câu hỏi Nghe"
+                "listen": "Câu hỏi Nghe",
+                "Writing": "Câu hỏi Viết"
             },
             "typeVideo": "Loại Video",
             "Video": "Video",

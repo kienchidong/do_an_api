@@ -57,7 +57,7 @@
                 </li>
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-question-circle-o" aria-hidden="true"></i> <span>{{ $t('router-name.questions.title')}}</span>
+                        <i class="fa fa-question-circle-o" aria-hidden="true"></i> <span>{{ $t('router-name.questions.title') }}</span>
                         <span class="pull-right-container">
                           <i class="fa fa-angle-left pull-right"></i>
                         </span>
@@ -73,8 +73,12 @@
                             <router-link to="/List-Listening-Question.html"><i class="fa fa-bookmark" aria-hidden="true"></i><span>{{ $t('router-name.questions.listen') }}</span></router-link>
                         </li>
                         <li>
+                            <router-link to="/List-Writing.html"><i class="fa fa-bookmark" aria-hidden="true"></i><span>{{ $t('router-name.questions.Writing') }}</span></router-link>
+                        </li>
+                        <li>
                             <router-link to="/List-Exams.html"><i class="fa fa-bookmark" aria-hidden="true"></i><span>{{ $t('router-name.Exams') }}</span></router-link>
                         </li>
+
                         <li>
                             <a href="#" v-on:click="showModal = !showModal"><i class="fa fa-bookmark" aria-hidden="true"></i><span>Level Detail</span></a>
                         </li>

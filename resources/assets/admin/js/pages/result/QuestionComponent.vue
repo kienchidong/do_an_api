@@ -83,7 +83,11 @@
                     this.chooseAnswer = index;
                 }
             })
-            this.status = (this.questionDetail.status == 1 || this.chooseAnswer == null) ? 'success': 'danger';
+            if(this.chooseAnswer == null){
+                this.status = 'light';
+            }else {
+                this.status = (this.questionDetail.status == 1) ? 'success' : 'danger';
+            }
         }
     }
 </script>
