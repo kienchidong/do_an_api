@@ -23,6 +23,9 @@ import ListVideo from "./pages/video/ListVideo";
 import ListFeedBack from "./pages/feedback/ListFeedBack";
 import ListResult from "./pages/result/ListResult";
 import ListeningTest from "./pages/exams/Listen/ListeningTest"
+import ListExams from "./pages/exams/ListExams";
+import ListWriting from "./pages/exams/Write/ListWriting";
+import CreateSynthetic from "./pages/exams/synthetic/CreateSynthetic";
 
 export const routes = [
     {
@@ -160,6 +163,30 @@ export const routes = [
                 path: "list-result.html",
                 name: "router-name.Result",
                 component: ListResult,
+                props: true,
+                meta: {permissions: "all"}
+
+            },
+            {
+                path: "List-Exams.html",
+                name: "router-name.Exams",
+                component: ListExams,
+                props: true,
+                meta: {permissions: "all"}
+
+            },
+            {
+                path: "List-Writing.html",
+                name: "router-name.questions.Writing",
+                component: ListWriting,
+                props: true,
+                meta: {permissions: "all"}
+
+            },
+            {
+                path: "List-Synthetic.html",
+                name: "router-name.questions.Writing2",
+                component: CreateSynthetic,
                 props: true,
                 meta: {permissions: "all"}
 

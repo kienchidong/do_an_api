@@ -103,9 +103,6 @@
             return {
                 currentPage: 1,
                 totalPage: 0,
-                formLoad: {
-                    page: null,
-                },
                 table: {
                     isNull: null,
                     collumns: [...table_collumns],
@@ -120,9 +117,15 @@
         created() {
             this.firstLoad();
         },
+        computed: {
+            formLoad: function () {
+                return {
+                    page: this.currentPage,
+                }
+            },
+        },
         methods: {
             firstLoad() {
-                this.formLoad.page = this.currentPage;
                 axios.post('video/getList', this.formLoad).then(response => {
                     let {data} = response.data;
                     this.totalPage = data.total_page;
@@ -149,13 +152,11 @@
                     case table_index[0]:
                         return 10 * (this.currentPage - 1) + index + 1;
                     case table_index[2]:
-                        let link ='https://www.youtube.com/watch?v='+obj['video_id'];
-                        return '<a target="_blank" href="'+link+'">'+link+'</a>';
+                        let link = 'https://www.youtube.com/watch?v=' + obj['video_id'];
+                        return '<a target="_blank" href="' + link + '">' + link + '</a>';
                     default:
                         return obj[key];
-
                 }
-
             }
         }
     }

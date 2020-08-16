@@ -33,6 +33,7 @@
                 <b-form-select v-model="type" class="mb-3">
                     <b-form-select-option value="0">Đọc</b-form-select-option>
                     <b-form-select-option value="1">Nghe</b-form-select-option>
+                    <b-form-select-option value="2">Viết</b-form-select-option>
                 </b-form-select>
             </b-form-group>
             <b-form-group
@@ -117,20 +118,24 @@
                         }
                     }
                 ).then(response => {
-                   console.log(response);
-                 /*   let {data} = response.data;
-                    this.group_id = data.id;
-                    this.$swal({
-                        title: 'Bao nhiêu câu?',
-                        input: 'number',
-                        inputPlaceholder: 'number questions',
-                        showCloseButton: true,
-                    }).then((result) => {
-                        if (result.value) {
-                            this.numberQuestion = result.value;
-                        }
-                    });
-                    this.step = this.step + 1;*/
+                    console.log(response);
+                    if(response.data.data.type !=2) {
+                        let {data} = response.data;
+                        this.group_id = data.id;
+                        this.$swal({
+                            title: 'Bao nhiêu câu?',
+                            input: 'number',
+                            inputPlaceholder: 'number questions',
+                            showCloseButton: true,
+                        }).then((result) => {
+                            if (result.value) {
+                                this.numberQuestion = result.value;
+                            }
+                        });
+                        this.step = this.step + 1;
+                    } else {
+                        this.$router.push('/List-Group-Question');
+                    }
                 }).catch(err => {
                     const {data} = err.response;
                     if (typeof data.errors === 'object') {

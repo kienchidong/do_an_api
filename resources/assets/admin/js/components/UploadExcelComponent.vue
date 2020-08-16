@@ -17,12 +17,6 @@
                 file: null,
             }
         },
-        watch: {
-          file: function(val){
-              console.log('đây');
-              console.log(val);
-          }
-        },
         methods: {
             UploadFile(e) {
                 let files = e.target.files || e.dataTransfer.files;

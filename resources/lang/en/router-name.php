@@ -10,13 +10,16 @@ return [
     'newsEdit' => 'Edit News',
     'questionsCreate' => 'Create Questions',
     'questions' => [
+        'title' => 'Questions',
         'listSimple' => 'Simple Questions',
-        'listGroup' => 'Group Questions',
-        'editGroup' => 'Edit Group Questions',
-        'listen' => 'Listening Question'
+        'listGroup' => 'Reading Questions',
+        'editGroup' => 'Edit Reading Questions',
+        'listen' => 'Listening Question',
+        'Writing' => 'List Writing Questions'
     ],
     'typeVideo' => 'Type of Video',
     'Video' => 'Video',
     'Feedback' => 'Feedback',
-    'Result' => 'Result'
+    'Result' => 'Result',
+    'Exams' => 'List Exams',
 ];

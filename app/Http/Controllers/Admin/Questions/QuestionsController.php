@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Questions;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\QuestionRequest;
 use App\Http\Resources\Questions\QuestionsCollection;
+use App\Imports\SimpleQuestions\SimpleQuestionsImport;
 use App\Model\Question\QuestionModel;
 use Illuminate\Http\Request;
 use App\Exports\SimpleQuestionsExport;
@@ -46,13 +47,16 @@ class QuestionsController extends Controller
     }
 
     public function import(Request $request){
-        return response()->json($request->all());
+        Excel::import(new SimpleQuestionsImport(), $request->file);
+
+        return response()->json(['ok'=> 'ok']);
     }
 
-    public function Export(Request $request){
-        $size = $request->get('size', 10);
+    public function export(Request $request){
+        $size = $request->get('size', 0);
         $type = $request->get('type', 'xlsx');
         $fileName = 'simpleQuestion.'.$type;
         return Excel::download(new SimpleQuestionsExport($size), $fileName);
+
     }
 }

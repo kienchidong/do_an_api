@@ -137,15 +137,18 @@ export default {
             "newsEdit": "Edit News",
             "questionsCreate": "Create Questions",
             "questions": {
+                "title": "Questions",
                 "listSimple": "Simple Questions",
-                "listGroup": "Group Questions",
-                "editGroup": "Edit Group Questions",
-                "listen": "Listening Question"
+                "listGroup": "Reading Questions",
+                "editGroup": "Edit Reading Questions",
+                "listen": "Listening Question",
+                "Writing": "List Writing Questions"
             },
             "typeVideo": "Type of Video",
             "Video": "Video",
             "Feedback": "Feedback",
-            "Result": "Result"
+            "Result": "Result",
+            "Exams": "List Exams"
         },
         "sidebar": {
             "chose-lang": "Language",
@@ -163,12 +166,15 @@ export default {
             "lock": "Lock"
         },
         "system": {
-            "welcome": "Welcome"
+            "welcome": "Welcome",
+            "question": "Questions",
+            "mininute": "Mininute"
         },
         "table": {
             "#": "#",
             "actions": "Actions",
             "detail": "Detail",
+            "created": "Created At",
             "news": {
                 "title": "Title",
                 "summary": "Describe",
@@ -186,6 +192,12 @@ export default {
             "feedback": {
                 "content": "Content",
                 "user": "User Create"
+            },
+            "exams": {
+                "Level": "Level",
+                "number_question": "Number Question",
+                "status": "Status",
+                "time": "Time"
             }
         },
         "validation": {
@@ -452,15 +464,18 @@ export default {
             "newsEdit": "Sửa Bài viết",
             "questionsCreate": "Tạo mới câu hỏi",
             "questions": {
+                "title": "Câu hỏi",
                 "listSimple": "Câu Hỏi Đơn",
-                "listGroup": "Nhóm câu hỏi",
-                "editGroup": "Sửa Nhóm câu hỏi",
-                "listen": "Câu hỏi Nghe"
+                "listGroup": "Câu hỏi Đọc",
+                "editGroup": "Sửa Câu hỏi đọc",
+                "listen": "Câu hỏi Nghe",
+                "Writing": "Câu hỏi Viết"
             },
             "typeVideo": "Loại Video",
             "Video": "Video",
             "Feedback": "Phản Hồi",
-            "Result": "Kết Quả HỌc Viên"
+            "Result": "Kết Quả HỌc Viên",
+            "Exams": "Đề Thi"
         },
         "sidebar": {
             "chose-lang": "Ngôn ngữ",
@@ -478,12 +493,15 @@ export default {
             "lock": "Khóa"
         },
         "system": {
-            "welcome": "Xin Chào"
+            "welcome": "Xin Chào",
+            "question": "Câu hỏi",
+            "mininute": "Phút"
         },
         "table": {
             "#": "#",
             "actions": "Hành Động",
             "detail": "Chi tiết",
+            "created": "Thời gian",
             "news": {
                 "title": "Tiêu đề",
                 "summary": "Mô tả",
@@ -501,6 +519,12 @@ export default {
             "feedback": {
                 "content": "Nội Dung",
                 "user": "Người Tạo"
+            },
+            "exams": {
+                "Level": "Trình độ",
+                "number_question": "Số câu hỏi",
+                "status": "Trạng Thái",
+                "time": "Thời gian"
             }
         },
         "validation": {

@@ -91,6 +91,7 @@
     const table_collumns = [
         'table.#',
         'table.feedback.content',
+        'table.created',
         'table.feedback.user',
         'table.actions',
     ];
@@ -98,6 +99,7 @@
     const table_index = [
         '#',
         'content',
+        'created',
         'user',
     ];
 
@@ -158,6 +160,9 @@
                         return this.size * (this.currentPage - 1) + index + 1;
                     }
                     case table_index[2]: {
+                        return new Date(obj[key]*1000).toLocaleString();
+                    }
+                    case table_index[3]: {
                         return obj[key].name;
                     }
                     default: {

@@ -4,7 +4,7 @@
 
         <b-modal v-model="modalShow">
             <b-form-checkbox-group id="checkbox-group-2" v-model="formData.permissions" name="flavour-2" stacked>
-                <b-form-checkbox v-for="(per, index) in listPermission" :key="index" :value="per.id">{{ per.name }}
+                <b-form-checkbox v-for="(per, index) in listPermission" :key="index" :value="per.id">{{ $t(per.name) }}
                 </b-form-checkbox>
             </b-form-checkbox-group>
             <template v-slot:modal-footer>

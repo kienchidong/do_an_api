@@ -3,6 +3,7 @@ return [
     '#' => '#',
     'actions' => 'Actions',
     'detail' => 'Detail',
+    'created' => 'Created At',
     'news' => [
         'title' => 'Title',
         'summary' => 'Describe',
@@ -20,5 +21,11 @@ return [
     'feedback' => [
         'content' => 'Content',
         'user' => 'User Create',
+    ],
+    'exams' => [
+        'Level' => 'Level',
+        'number_question' => 'Number Question',
+        'status' => 'Status',
+        'time' => 'Time'
     ]
 ];

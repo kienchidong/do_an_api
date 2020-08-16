@@ -128,7 +128,6 @@
         methods: {
             firstLoad() {
                 axios.post('result/getList', this.formLoad).then(response => {
-                    console.log(response);
                     this.totalPage = response.data.total_page;
                     if (response.data.lists.length > 0) {
                         this.table.data = response.data.lists;

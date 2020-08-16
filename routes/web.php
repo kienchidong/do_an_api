@@ -16,7 +16,7 @@
  });*/
 
 
-$router->get('test', 'Result\ResultController@getList');
+$router->get('test', 'Video\VideoController@store');
 $router->get('deleteCate/{id}', 'Admin\CateNewsController@destroy');
 $router->prefix('tests')->group(function () use ($router){
     $router->get('getList', 'Admin\Test\TestController@getList');
@@ -99,6 +99,7 @@ $router->group(['middleware' => 'locale'], function () use ($router) {
                     $router->delete('delete/{id}', 'Admin\Questions\QuestionsController@destroy');
 
                     $router->post('import', 'Admin\Questions\QuestionsController@import');
+                    $router->get('export', 'Admin\Questions\QuestionsController@export');
                 });
 
                 $router->prefix('group')->group(function () use ($router) {
@@ -106,7 +107,15 @@ $router->group(['middleware' => 'locale'], function () use ($router) {
 
                     $router->get('edit/{id}', 'Admin\Questions\GroupQuestionsController@edit');
                     $router->put('edit/{id}', 'Admin\Questions\GroupQuestionsController@update');
+
+                    $router->post('import', 'Admin\Questions\GroupQuestionsController@import');
+                    $router->get('export', 'Admin\Questions\GroupQuestionsController@export');
                 });
+
+                $router->prefix('write')->group(function () use ($router) {
+                    $router->post('getList', 'Admin\Questions\GroupQuestionsController@getList');
+                });
+
             });
 
             /** type of video */
@@ -129,8 +138,23 @@ $router->group(['middleware' => 'locale'], function () use ($router) {
                 $router->post('getList', 'Result\ResultController@getList');
             });
 
-            $router->prefix('feedback')->group(function () use ($router) {
+            /** feedback */
+            $router->prefix('feedback')->group(function () use ($router){
                 $router->post('getList', 'Feedback\FeedbackController@getList');
+
+            });
+
+            /** đề kiểm tra */
+            $router->prefix('exams')->group(function () use ($router) {
+                $router->post('index', 'Admin\Test\TestController@index');
+
+                $router->post('store', 'Admin\Test\TestController@store');
+            });
+
+            $router->prefix('synthetic')->group(function () use ($router) {
+                $router->post('index', 'Admin\SyntheticModel\SyntheticController@index');
+
+                $router->post('store', 'Admin\SyntheticModel\SyntheticController@store');
             });
             /**
              * route VueJs phải ở dưới cùng

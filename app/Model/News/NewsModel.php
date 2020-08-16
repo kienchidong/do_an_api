@@ -2,6 +2,8 @@
 
 namespace App\Model\News;
 
+use App\Model\Question\QuestionGroupModel;
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
@@ -9,7 +11,7 @@ class NewsModel extends Model
 {
     //
     protected $table = 'news';
-    public $fillable = ['title', 'slug', 'cate_id', 'summary', 'content', 'folder', 'image'];
+    public $fillable = ['title', 'slug', 'cate_id', 'summary', 'content', 'folder', 'image', 'author_id', 'question_id'];
 
     public function addTag($tags)
     {
@@ -45,5 +47,17 @@ class NewsModel extends Model
     public function comments()
     {
         return $this->hasMany(CommentsModel::class, 'news_id', 'id');
+    }
+
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'author_id', 'id')->withDefault([
+            'id' => '0',
+            'name' => 'Admin'
+        ]);
+    }
+    public function question()
+    {
+        return $this->belongsTo(QuestionGroupModel::class, 'question_id', 'id');
     }
 }

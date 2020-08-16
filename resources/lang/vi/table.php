@@ -3,6 +3,7 @@ return [
     '#' => '#',
     'actions' => 'Hành Động',
     'detail' => 'Chi tiết',
+    'created' => 'Thời gian',
     'news' => [
         'title' => 'Tiêu đề',
         'summary' => 'Mô tả',
@@ -20,5 +21,11 @@ return [
     'feedback' => [
         'content' => 'Nội Dung',
         'user' => 'Người Tạo',
+    ],
+    'exams' => [
+        'Level' => 'Trình độ',
+        'number_question' => 'Số câu hỏi',
+        'status' => 'Trạng Thái',
+        'time' => 'Thời gian'
     ]
 ];

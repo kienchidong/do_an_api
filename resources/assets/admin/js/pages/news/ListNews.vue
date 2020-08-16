@@ -152,7 +152,7 @@
                         return 10 * (this.currentPage - 1) + index + 1;
                     }
                     case table_index[3]: {
-                        if (item[key].length > 100) {
+                        if (item[key] && item[key].length > 100) {
                             return item[key].slice(0, 100) + '...';
                         } else {
                             return item[key]
