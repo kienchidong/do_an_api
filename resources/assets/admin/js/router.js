@@ -26,6 +26,7 @@ import ListeningTest from "./pages/exams/Listen/ListeningTest"
 import ListExams from "./pages/exams/ListExams";
 import ListWriting from "./pages/exams/Write/ListWriting";
 import CreateSynthetic from "./pages/exams/synthetic/CreateSynthetic";
+import ListSynthetic from "./pages/exams/synthetic/ListSynthetic";
 
 export const routes = [
     {
@@ -186,7 +187,7 @@ export const routes = [
             {
                 path: "List-Synthetic.html",
                 name: "router-name.questions.Writing2",
-                component: CreateSynthetic,
+                component: ListSynthetic,
                 props: true,
                 meta: {permissions: "all"}
 

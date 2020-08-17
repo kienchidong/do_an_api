@@ -1,5 +1,6 @@
 <template>
     <div class="root">
+        <b-modal v-model="showModal" hide-footer size="lg" title="Create Simple Test">
         <b-row>
             <b-col>
                 <b-form-group label="You want to Choose or Create Random?">
@@ -15,16 +16,21 @@
         </b-row>
         <hr>
         <section v-if="selected">
+            <b-form-group
+                label="Level:"
+            >
+                <b-form-select v-model="level" :options="options"></b-form-select>
+            </b-form-group>
            <listening-test
                :check-question="true"
                @getList="listListening = $event"
            />
-            {{ listReading }}
             <list-group-questions
                 :check-question="true"
                 @getList="listReading = $event"
             />
         </section>
+        </b-modal>
     </div>
 </template>
 
@@ -50,6 +56,17 @@
                 numberQuestion: 0,
                 listReading: [],
                 listListening: [],
+                level: null,
+                options: [
+                    { value: null, text: 'Please select level' },
+                    { value: 1, text: 'Beginner(0-250)' },
+                    { value: 2, text: 'High Beginner(255-400)' },
+                    { value: 3, text: 'Low Intermediate(405-600)' },
+                    { value: 4, text: 'Intermediate(605-700)' },
+                    { value: 5, text: 'High Intermediate(705-780)' },
+                    { value: 6, text: 'Low Advanced(785-900)' },
+                    { value: 7, text: 'Advanced(905-990)' },
+                ]
             }
         },
         mounted() {
@@ -73,12 +90,13 @@
                 return {
                     reading: JSON.stringify(this.listReading),
                     listening: JSON.stringify(this.listListening),
+                    level: this.level,
+                    number_question: this.listReading.length + this.listListening.length,
                 }
             }
         },
         methods: {
             createExam() {
-                console.log('abc')
                 axios.post('synthetic/store', this.formData).then(response => {
                     this.showModal = false;
                     this.$emit('created');

@@ -75,18 +75,26 @@
             </div>
         </section>
 
-        <create-exams
+        <create-synthetic
             v-if="createModal"
             @created="firstLoad"
             v-model="createModal"/>
         <!--modal detail-->
         <b-modal v-model="showDetail" size="lg" title="Detail">
-            <div v-for="(item, index) in testDetail" :key="index">
-                <question-component
+            <h2>Listening</h2>
+            <div v-for="(item, index) in testDetail.listening" :key="index">
+                <detail-synthetic
                     :question-detail="item"
-                    :number-question="index+1"
                     :explain="true"
-                ></question-component>
+                ></detail-synthetic>
+                <hr>
+            </div>
+            <h2>Reading</h2>
+            <div v-for="(item, index) in testDetail.reading" :key="index">
+                <detail-synthetic
+                    :question-detail="item"
+                    :explain="true"
+                ></detail-synthetic>
                 <hr>
             </div>
         </b-modal>
@@ -96,28 +104,26 @@
 
 <script>
     import Paginate from "vuejs-paginate";
-    import QuestionComponent from "../result/QuestionComponent";
-    import CreateExams from "./CreateExams";
+    import CreateSynthetic from "./CreateSynthetic";
+    import DetailSynthetic from "./DetailSynthetic";
 
     const table_collumns = [
         'table.#',
         'table.exams.Level',
         'table.exams.number_question',
         'table.exams.time',
-        'table.exams.status',
         'table.actions',
     ];
-    const status = ['status.lock', 'status.active'];
 
     const table_index = [
-        '#', 'level', 'number_question', 'time', 'status'
+        '#', 'level', 'number_question', 'time'
     ]
     export default {
         name: "ListSynthetic",
         components: {
             Paginate,
-            QuestionComponent,
-            CreateExams
+            CreateSynthetic,
+            DetailSynthetic
         },
         data() {
             return {
@@ -153,7 +159,8 @@
         },
         methods: {
             firstLoad() {
-                axios.post('exams/index', this.formLoad).then(response => {
+                axios.post('synthetic/index', this.formLoad).then(response => {
+                   console.log(response)
                     let {total_page, lists} = response.data;
                     this.totalPage = total_page;
                     this.table.data = lists;
@@ -168,14 +175,13 @@
                         return obj[key] + ' ' +this.$t('system.question');
                     case table_index[3]:
                         return obj[key] + ' ' + this.$t('system.mininute');
-                    case table_index[4]:
-                        return this.$t(status[obj[key]]);
                     default:
                         return obj[key];
                 }
             },
             viewDetail(index){
-                this.testDetail = this.table.data[index].list_question;
+                this.testDetail = this.table.data[index];
+                console.log(this.testDetail)
                 this.showDetail =true;
             }
         }

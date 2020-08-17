@@ -17,6 +17,9 @@ class CreateSyntheticQuestionsTable extends Migration
             $table->bigIncrements('id');
             $table->text('listening');
             $table->text('reading');
+            $table->integer('level');
+            $table->integer('number_question')->default(0);
+            $table->integer('time')->default(5);
             $table->timestamps();
         });
     }
