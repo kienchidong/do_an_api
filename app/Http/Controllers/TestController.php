@@ -18,6 +18,7 @@ use App\Model\ResultModel;
 use App\Traits\ApiResponser;
 use App\Traits\FileUpload;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
 class TestController extends Controller
@@ -30,6 +31,7 @@ class TestController extends Controller
 
     public function test()
     {
+        dd(Auth::user());
         //$list = QuestionModel::whereNull('group_id')->paginate(10);
 
         //return response()->json(new QuestionsCollection($list));

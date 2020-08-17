@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-$router->post('test', 'Client\Tests\TestController@answerWriting');
+$router->post('test', 'TestController@test');
 $router->middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -61,7 +61,6 @@ $router->middleware('loginOrNot')->group(function () use ($router){
        $router->post('getHotNews', 'Client\HomeController@getHotNews');
        $router->post('getListNewsUser', 'Client\HomeController@getListNewsUser');
     });
-
 
     /** news*/
     $router->prefix('news')->group(function () use ($router) {
