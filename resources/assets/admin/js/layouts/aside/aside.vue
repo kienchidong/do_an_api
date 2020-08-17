@@ -80,6 +80,10 @@
                         </li>
 
                         <li>
+                            <router-link to="/List-Synthetic.html"><i class="fa fa-bookmark" aria-hidden="true"></i><span>{{ $t('router-name.Exams') }}2</span></router-link>
+                        </li>
+
+                        <li>
                             <a href="#" v-on:click="showModal = !showModal"><i class="fa fa-bookmark" aria-hidden="true"></i><span>Level Detail</span></a>
                         </li>
                         <level-detail-component :show="showModal" v-on:closeModal="showModal = $event"></level-detail-component>

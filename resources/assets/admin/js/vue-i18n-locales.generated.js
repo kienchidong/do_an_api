@@ -174,6 +174,7 @@ export default {
             "#": "#",
             "actions": "Actions",
             "detail": "Detail",
+            "created": "Created At",
             "news": {
                 "title": "Title",
                 "summary": "Describe",
@@ -500,6 +501,7 @@ export default {
             "#": "#",
             "actions": "Hành Động",
             "detail": "Chi tiết",
+            "created": "Thời gian",
             "news": {
                 "title": "Tiêu đề",
                 "summary": "Mô tả",

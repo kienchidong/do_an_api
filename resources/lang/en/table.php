@@ -3,6 +3,7 @@ return [
     '#' => '#',
     'actions' => 'Actions',
     'detail' => 'Detail',
+    'created' => 'Created At',
     'news' => [
         'title' => 'Title',
         'summary' => 'Describe',

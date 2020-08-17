@@ -3,6 +3,7 @@ return [
     '#' => '#',
     'actions' => 'Hành Động',
     'detail' => 'Chi tiết',
+    'created' => 'Thời gian',
     'news' => [
         'title' => 'Tiêu đề',
         'summary' => 'Mô tả',

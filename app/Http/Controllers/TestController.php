@@ -37,16 +37,16 @@ class TestController extends Controller
         //return response()->json(new QuestionsCollection($list));
         /*   $group = QuestionGroupModel::paginate(10);
            return $this->successResponseMessage(new GroupQuestionsCollection($group), 200, 'get success');*/
-        return Excel::download(new SimpleQuestionsExport(1), 'simpleQuestion.xlsx');
-        /*$html = file_get_html('https://www.youtube.com/watch?v=2cblKNffVPg');
+        //return Excel::download(new SimpleQuestionsExport(1), 'simpleQuestion.xlsx');
+       /* $html = file_get_html('https://www.youtube.com/watch?v=2cblKNffVPg');
 
         $meta = $html->find('meta[property=og:title]', 0);
 
-        dd($meta->content); */
-        /* $url = "https://www.youtube.com/watch?v=2cblKNffVPg";
-         $headers = file_get_contents($url);
+        dd($meta->content);*/
+         $url = "https://www.youtube.com/watch?v=2cblKNffVPg";
+         $headers = str_get_html(file_get_contents($url));
 
-         dd($headers->find('meta[property=og:title]',0));
+         dd($headers);
          if(strpos($headers[0],'404') === false)
          {
              echo "URL Exists";
@@ -55,7 +55,7 @@ class TestController extends Controller
          {
              echo "URL Not Exists";
          }
-         die();*/
+         die();
         //echo $meta->content;
 
         $question = QuestionModel::whereNull('group_id')->get();

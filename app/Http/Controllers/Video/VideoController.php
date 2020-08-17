@@ -27,6 +27,7 @@ class VideoController extends Controller
         ]);
         $name = $request->get('name', '');
         if($name == ''){
+
             $html = file_get_html('https://www.youtube.com/watch?v='.$request->id_video);
 
             $meta = $html->find('meta[property=og:title]', 0);

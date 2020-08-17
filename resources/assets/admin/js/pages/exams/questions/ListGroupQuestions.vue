@@ -6,7 +6,7 @@
                 <div class="col-12">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title">
+                            <h3 class="box-title" v-if="!checkQuestion">
                                 <router-link class="btn btn-primary" to="Questions-Create">Thêm Mới</router-link>
                                 <b-button variant="success" v-on:click="importModal = !importModal"><i class="fa fa-upload" aria-hidden="true"></i> Import</b-button>
                                 <b-button variant="success" v-on:click="exportModal = !exportModal"><i class="fa fa-download" aria-hidden="true"></i> Export</b-button>
@@ -35,11 +35,15 @@
                                 <table class="table table-hover">
                                     <thead class="thead-light">
                                     <tr>
+                                        <th v-if="checkQuestion">chọn</th>
                                         <th v-for="(col) in table.collumns">{{ $t(col) }}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr v-for="(item, index) in table.data">
+                                        <td v-if="checkQuestion">
+                                            <input type="checkbox" name="group" v-model="chooseQuestions" :value="item.group_id"></b-form-checkbox-group>
+                                        </td>
                                         <slot v-for="(columnIndex, indexColumn) in table.index">
                                             <td :key="indexColumn" v-html="tableIndex(index, columnIndex)"></td>
                                         </slot>
@@ -53,6 +57,7 @@
                                                     View Detail
                                                 </b-dropdown-item>
                                                 <b-dropdown-item variant="primary"
+                                                                 v-if="!checkQuestion"
                                                                  :to="'Edit-Group-Question?id='+item.group_id">
                                                     <i class="fa fa-edit"></i>
                                                     Edit
@@ -63,6 +68,7 @@
                                     </tbody>
                                     <tfoot class="thead-light">
                                     <tr>
+                                        <th v-if="checkQuestion">chọn</th>
                                         <th v-for="(col) in table.collumns">{{ $t(col) }}</th>
                                     </tr>
                                     </tfoot>
@@ -156,6 +162,13 @@
             ExportSimpleQuestion,
             ImportSimpleQuestion
         },
+
+        props: {
+            checkQuestion: {
+                type: Boolean,
+                default: false
+            }
+        },
         data() {
             return {
                 done: false,
@@ -178,6 +191,7 @@
                 editForm: [],
                 importModal: false,
                 exportModal: false,
+                chooseQuestions: [],
             }
         },
         watch: {
@@ -187,6 +201,10 @@
                     this.firstLoad();
                     this.done = false;
                 }
+            },
+
+            chooseQuestions: function (val) {
+                this.$emit('getList', val);
             }
         },
         computed:{

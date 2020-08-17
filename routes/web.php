@@ -16,7 +16,7 @@
  });*/
 
 
-$router->get('test', 'TestController@test2');
+$router->get('test', 'Video\VideoController@store');
 $router->get('deleteCate/{id}', 'Admin\CateNewsController@destroy');
 $router->prefix('tests')->group(function () use ($router){
     $router->get('getList', 'Admin\Test\TestController@getList');
@@ -149,6 +149,12 @@ $router->group(['middleware' => 'locale'], function () use ($router) {
                 $router->post('index', 'Admin\Test\TestController@index');
 
                 $router->post('store', 'Admin\Test\TestController@store');
+            });
+
+            $router->prefix('synthetic')->group(function () use ($router) {
+                $router->post('index', 'Admin\SyntheticModel\SyntheticController@index');
+
+                $router->post('store', 'Admin\SyntheticModel\SyntheticController@store');
             });
             /**
              * route VueJs phải ở dưới cùng
