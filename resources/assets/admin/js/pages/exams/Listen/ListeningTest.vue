@@ -87,7 +87,7 @@
                                 <b>{{ modalDetail.name }}</b>
                                 <hr>
                                 <audio controls v-if="modalDetail.audio != 0">
-                                    <source src=" http://127.0.0.1:8000/upload/audio-1594734507-con-nguoi.mp3" type="audio/mpeg">
+                                    <source :src="modalDetail.audio" type="audio/mpeg">
                                     Your browser does not support the audio element.
                                 </audio>
 

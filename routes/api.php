@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-$router->post('test', 'TestController@test');
+$router->post('test', 'Admin\SyntheticModel\SyntheticController@index');
 $router->middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
