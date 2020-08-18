@@ -12,11 +12,11 @@ class CateNewsSeeder extends Seeder
     public function run()
     {
         \App\Model\CateNewsModel::create([
-            'name' => 'Linh tinh',
-            'slug' => 'linh-tinh.html',
+            'name' => 'Học Toeic',
+            'slug' => 'hoc-toeic.html',
         ], [
-            'name' => 'Học tập',
-            'slug' => 'hoc-tap.html',
+            'name' => 'Luyện Ngữ Pháp',
+            'slug' => 'luyen-ngu-phap.html',
         ]);
 
     }
