@@ -11,7 +11,7 @@ class CateNewsSeeder extends Seeder
      */
     public function run()
     {
-        \App\Model\CateNewsModel::create([
+        \App\Model\News\CateNewsModel::create([
             'name' => 'Học Toeic',
             'slug' => 'hoc-toeic.html',
         ], [
