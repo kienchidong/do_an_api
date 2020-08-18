@@ -38,7 +38,7 @@ class AdminAccountController extends Controller
         $input = $request->all();
         $input['password'] = bcrypt($input['repassword']);
         $input['folder'] = 'folder-' . $this->name_image($request->name) . '-avatar';
-        $input['avatar'] = $this->saveImgBase64($request->image, 'avatar/admins/' . $input['folder']);
+        /* $input['avatar'] = $this->saveImgBase64($request->image, 'avatar/admins/' . $input['folder']); */
         $admin = AdminModel::Create($input);
         $admin->givePermissionTo($input['permission_id']);
         return $this->successResponseMessage([], 200, 'created success');
