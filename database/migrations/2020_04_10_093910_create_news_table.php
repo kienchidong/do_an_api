@@ -17,15 +17,17 @@ class CreateNewsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('slug');
-            $table->text('summary');
+            $table->text('summary')->nullable();
             $table->text('content');
-            $table->string('folder');
-            $table->string('image');
+            $table->string('folder')->nullable();
+            $table->string('image')->nullable();
             $table->bigInteger('cate_id')->unsigned();
             $table->foreign('cate_id')
                 ->references('id')
                 ->on('cate_news')
                 ->onDelete('cascade');
+            $table->bigInteger('author_id')->nullable();
+            $table->bigInteger('question_id')->nullable();
             $table->timestamps();
         });
         Schema::create('tagnews', function (Blueprint $table) {

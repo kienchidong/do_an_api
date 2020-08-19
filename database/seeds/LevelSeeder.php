@@ -15,19 +15,19 @@ class LevelSeeder extends Seeder
         //
         DB::table('levels')->insert([
             [
-                'name' => 'Beginner',
+                'name' => 'Beginner(0-250)',
             ],[
-                'name' => 'High Beginner',
+                'name' => 'High Beginner(255-400)',
             ],[
-                'name' => 'Low Intermediate',
+                'name' => 'Low Intermediate(405-600)',
             ],[
-                'name' => 'Intermediate',
+                'name' => 'Intermediate(605-700)',
             ],[
-                'name' => 'High Intermediate',
+                'name' => 'High Intermediate(705-780)',
             ],[
-                'name' => 'Low Advanced',
+                'name' => 'Low Advanced(785-900)',
             ],[
-                'name' => 'Advanced',
+                'name' => 'Advanced(905-990)',
             ],
         ]);
     }

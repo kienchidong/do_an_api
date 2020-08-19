@@ -12,7 +12,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker\Factory::create();
+        //$faker = Faker\Factory::create();
         User::create([
             'name' => 'Hà Đức Kiên',
             'email' => 'kienchidong@gmail.com',
@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
             'phone' => '0392123325',
             'status' => 1
         ]);
-        for($i =0; $i<=20; $i++){
+        /*for($i =0; $i<=20; $i++){
             User::create([
                 'name' => $faker->name,
                 'email' => $faker->unique()->email,
@@ -29,6 +29,6 @@ class UserSeeder extends Seeder
                 'gender' => random_int(0,2),
                 'status' => random_int(0,1)
             ]);
-        }
+        }*/
     }
 }

@@ -11,4 +11,6 @@ class TagNewsModel extends Model
     public $fillable = ['name', 'news_id'];
 
     public $timestamps = false;
+
+    protected $primaryKey = null;
 }
