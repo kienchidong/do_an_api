@@ -25,6 +25,7 @@ class SyntheticObserver
         }
         $syntheticModel::find($syntheticModel->id)->update([
             'number_question' => $count,
+            'time' => $count,
         ]);
     }
 

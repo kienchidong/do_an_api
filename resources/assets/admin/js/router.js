@@ -186,7 +186,7 @@ export const routes = [
             },
             {
                 path: "List-Synthetic.html",
-                name: "router-name.questions.Writing2",
+                name: "router-name.Synthetic",
                 component: ListSynthetic,
                 props: true,
                 meta: {permissions: "all"}

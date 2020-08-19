@@ -5,12 +5,15 @@ namespace App\Http\Controllers\Admin\SyntheticModel;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Questions\GroupQuestionsCollection;
 use App\Http\Resources\Synthetic\SyntheticCollection;
+use App\Http\Resources\Synthetic\SyntheticResource;
 use App\Model\Question\QuestionGroupModel;
 use App\Model\SyntheticModel;
+use App\Traits\ApiResponser;
 use Illuminate\Http\Request;
 
 class SyntheticController extends Controller
 {
+    use ApiResponser;
     //
     public function index(Request $request)
     {
@@ -34,4 +37,24 @@ class SyntheticController extends Controller
 
     }
 
+
+    public function getList(Request $request)
+    {
+        $size = $request->get('size', 9);
+        $test = SyntheticModel::orderByDESC('created_at')->paginate($size);
+
+        return $this->successResponseMessage(new SyntheticCollection($test), 200, 'success');
+    }
+
+    public function getDetail(Request $request)
+    {
+        $request->validate([
+            'id' => 'bail|required|exists:synthetic_questions,id',
+        ]);
+
+        $test = new SyntheticResource(SyntheticModel::find($request->id));
+
+        return $this->successResponseMessage($test, 200, 'success');
+
+    }
 }

@@ -22,4 +22,5 @@ return [
     'Feedback' => 'Feedback',
     'Result' => 'Result',
     'Exams' => 'List Exams',
+    'Synthetic' => 'Synthetic Questions'
 ];

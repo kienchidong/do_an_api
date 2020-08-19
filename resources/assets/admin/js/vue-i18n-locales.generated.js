@@ -148,7 +148,8 @@ export default {
             "Video": "Video",
             "Feedback": "Feedback",
             "Result": "Result",
-            "Exams": "List Exams"
+            "Exams": "List Exams",
+            "Synthetic": "Synthetic Questions"
         },
         "sidebar": {
             "chose-lang": "Language",
@@ -475,7 +476,8 @@ export default {
             "Video": "Video",
             "Feedback": "Phản Hồi",
             "Result": "Kết Quả HỌc Viên",
-            "Exams": "Đề Thi"
+            "Exams": "Đề Thi",
+            "Synthetic": "Đề thi tổng hợp"
         },
         "sidebar": {
             "chose-lang": "Ngôn ngữ",

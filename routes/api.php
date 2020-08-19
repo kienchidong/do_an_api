@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-$router->post('test', 'Admin\SyntheticModel\SyntheticController@index');
+$router->post('test', 'Result\ResultController@getList');
 $router->middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -109,6 +109,10 @@ $router->middleware('loginOrNot')->group(function () use ($router){
         $router->post('getListByUser', 'Result\ResultController@getListByUser');
     });
 
+    $router->prefix('synthetic')->group(function () use ($router){
+        $router->post('getList', 'Admin\SyntheticModel\SyntheticController@getList');
+        $router->post('detail', 'Admin\SyntheticModel\SyntheticController@getDetail');
+    });
 });
 
 

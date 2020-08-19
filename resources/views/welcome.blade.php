@@ -8,6 +8,7 @@
     <meta name="locale" content="{{ App::getLocale() }}"/>
     <meta name="userName" content="{{ Auth::user()->name }}">
     <meta name="userEmail" content="{{ Auth::user()->email }}">
+    <meta name="userRole" content="{{ Auth::user()->role_id }}">
     <meta name="userAvatar" content="null">
     <title>Admin</title>
     <link href="{{ asset('admin/css/app.css') }}" rel="stylesheet">

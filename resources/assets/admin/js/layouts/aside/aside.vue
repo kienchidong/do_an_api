@@ -80,7 +80,7 @@
                         </li>
 
                         <li>
-                            <router-link to="/List-Synthetic.html"><i class="fa fa-bookmark" aria-hidden="true"></i><span>{{ $t('router-name.Exams') }}2</span></router-link>
+                            <router-link to="/List-Synthetic.html"><i class="fa fa-bookmark" aria-hidden="true"></i><span>{{ $t('router-name.Synthetic') }}</span></router-link>
                         </li>
 
                         <li>
@@ -89,8 +89,8 @@
                         <level-detail-component :show="showModal" v-on:closeModal="showModal = $event"></level-detail-component>
                     </ul>
                 </li>
-                <li class="header">LABELS</li>
-                <li class="treeview">
+                <li class="header" v-if="userRole == 1">Admin</li>
+                <li class="treeview" v-if="userRole == 1">
                     <a href="#">
                         <i class="fa fa-users" aria-hidden="true"></i> <span>Account</span>
                         <span class="pull-right-container">
@@ -108,12 +108,13 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+                <li v-if="userRole == 1">
                     <router-link to="/list-feedback.html"><i class="fa fa-comments-o text-yellow" aria-hidden="true"></i> <span>{{ $t('router-name.Feedback') }}</span></router-link>
                 </li>
-                <li>
+                <li v-if="userRole == 1">
                     <router-link to="/list-result.html"><i class="fa fa-check-square-o" aria-hidden="true"></i> <span>{{ $t('router-name.Result') }}</span></router-link>
                 </li>
+
             </ul>
         </section>
         <!-- /.sidebar -->

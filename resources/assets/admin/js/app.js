@@ -37,6 +37,7 @@ Vue.mixin({
         return {
             userName: document.head.querySelector('meta[name="userName"]').content,
             userEmail: document.head.querySelector('meta[name="userEmail"]').content,
+            userRole: document.head.querySelector('meta[name="userRole"]').content,
             clientLink: 'http://localhost:8080/',
         };
     },

@@ -3,9 +3,9 @@
         <!-- Logo -->
         <a  :href="clientLink" target="_blank" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>H</b>ĐK</span>
+            <span class="logo-mini"><b>A</b></span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>Hà </b>Đức Kiên</span>
+            <span class="logo-lg">Admin</span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="">

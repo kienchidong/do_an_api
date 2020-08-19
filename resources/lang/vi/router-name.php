@@ -21,5 +21,6 @@ return [
     'Video' => 'Video',
     'Feedback' => 'Phản Hồi',
     'Result' => 'Kết Quả HỌc Viên',
-    'Exams' => 'Đề Thi'
+    'Exams' => 'Đề Thi',
+    'Synthetic' => 'Đề thi tổng hợp'
 ];
